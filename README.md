@@ -41,6 +41,9 @@
   * Scrapping Module 개발
   * Front-end 기능 개발
   * 앱 배포
+  
+  ![](./images/finple/1.jpg) ![](./images/finple/2.jpg) ![](./images/finple/3.jpg)
+  
 2. Eazel
 > Unity 모듈에서 쓰일 데이터를 Scrapping 할 모듈을 Python 언어로 Scrapy 기반으로 작성하였고 개발완성과 함께 iOS 앱 개발을 한 명의 팀원과 함께 처음부터 시작하였습니다. 앱을 처음부터 개발하는 건 처음이었고 단기간 이내에 상용앱을 만들어야 했기에 Alamofire, Firebase, Snapkit 들을 초기에 도입했으며 Reactive Programming 의 필요성을 느껴 RxSwift, ReactorKit 과 RxExtension 들을 도입하였습니다. 또한 앱 내에 AR 기능 구현을 위해 Unity를 iOS 프로젝트에 Embedding 하는 작업을 하고 Briding 을 개발하였습니다. 현재도 개발중입니다.
 
