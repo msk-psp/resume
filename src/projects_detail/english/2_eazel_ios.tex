@@ -1,0 +1,23 @@
+\resumeSubHeadingListStart
+    \resumeSubheading
+    {iOS Developer, iOS Team}{Jan 2019 -- Oct 2021}
+    {}{Gangnam, Seoul}
+
+    \resumeProjectHeading
+    {\textbf{iOS Application Development \& Deployment}}{iOS Developer}
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal: }To develop a native iOS application for displaying art content, featuring VR capabilities, asset downloading, and AR functionalities.}
+        \resumeItem{\textbf{My Role: }Led the development of the app's backend layer, including the API Client. Implemented detail views and view controllers for artworks, artists, and exhibitions. Developed key features including a Google Cardboard VR view via a Unity Bridge, a download service for VR assets, and an AR-based "Artwork Hanger" feature using ARKit.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Technical Consideration (Why):} Faced with upcoming complex features like VR asset downloading and Unity integration, I anticipated that the existing MVC structure would lead to increased complexity and reduced maintainability. The goal was to adopt a reactive architecture for clearer and more predictable state management.}
+                \resumeItem{\textbf{Trade-off Analysis (Trade-off):} I first considered \textbf{implementing the MVVM pattern manually}. However, I judged that this would require significant initial development resources for defining protocols and data binding logic. As an alternative, I reviewed the reactive programming framework, \textbf{ReactorKit}. I was impressed that ReactorKit enforces a clear, 3-step unidirectional data flow — \textbf{User Input (Action) -> Business Logic Processing (Mutate) -> Applying State Change (Reduce)} — which fundamentally prevents the complexity of manual implementation and makes the code flow very easy to understand. I concluded that despite the initial learning curve, adopting ReactorKit was more advantageous for long-term maintainability and development efficiency.}
+                \resumeItem{\textbf{Specific Implementation (How):} Re-architected the app based on ReactorKit. Unified the data flow by defining all user inputs as 'Actions' and state changes as 'State', and integrated the download service using an AWS S3 client into the Reactor logic.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Result \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Improved Development Efficiency:} After getting used to the framework, \textbf{the process of defining logic according to the Action-Mutate-Reduce structure became very easy and clear.} This led to improved development speed for new features and maintained code consistency.}
+                \resumeItem{\textbf{Enhanced Stability \& Maintainability:} The clear structure reduced the occurrence of state management-related bugs, and shortened the time it took for new team members to understand the codebase.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+\resumeSubHeadingListEnd

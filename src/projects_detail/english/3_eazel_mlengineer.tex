@@ -1,0 +1,70 @@
+\resumeSubHeadingListStart
+    \resumeSubheading
+    {MLOps Engineer, MLOps at Eazel Inc.}{Oct 2021 -- Jun 2022} % Assuming (주) Eazel is Eazel Inc.
+    {}{Jung-gu, Seoul}
+
+    \hypertarget{mlops}{
+    \resumeProjectHeading
+    {\textbf{MLOps-based Instagram Network Analysis and Investment Insight PoC}}{MLOps Engineer}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} To objectify/quantify artist market influence, which previously relied on experts' subjective judgments, using Instagram network data. The final goal was to prove growth potential with data and \textbf{succeed in securing Series A funding}.}
+        \resumeItem{\textbf{My Role:} As an MLOps Engineer, I led the construction of a \textbf{reproducible End-to-End pipeline} for the PoC, from data collection, \textbf{data/model versioning using DVC}, processing inputs for various models, to K-Means/PCA analysis and result visualization.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Technical Consideration (Why):} Lacking deep knowledge of the machine learning models themselves at the time, I chose to collaborate with an ML Research Engineer, allowing us to focus on our respective areas of expertise. My colleague handled various graph embedding models like \textbf{Node2Vec and GAT}, while I focused on the data pipeline and subsequent analysis/visualization.}
+                \resumeItem{\textbf{Specific Implementation (How):} Introduced \textbf{DVC (Data Version Control)}, which integrates with Git, to track and version the model's input data and artifacts by linking them to Git commit hashes, thereby \textbf{ensuring the reproducibility} of experiments. Afterwards, I took the extracted embedding vectors as input and analyzed artist groups using \textbf{K-Means clustering} and \textbf{PCA}. Finally, I implemented an interactive network visualization dashboard with these analysis results using \textbf{Next.js and Cytoscape.js}.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Result \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Business Impact:} Proved artist growth potential through the analytics from the developed visualization dashboard, making a \textbf{decisive contribution to successfully securing Series A funding}.}
+                \resumeItem{\textbf{Personal \& Technical Growth:} Through this collaborative experience, I gained a deep practical understanding of building machine learning pipelines, and it became the decisive catalyst for my career transition to a Data Engineer.}
+            \resumeItemListEnd
+            \hyperlink{mlops_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{instagram_scraper}{
+    \resumeProjectHeading
+    {\textbf{Data Scraper Development and Enhancement for Bypassing Instagram Bot Detection}}{}
+    }
+    \resumeItemListStart
+    \resumeItem{\textbf{Core Problem \& Goal:} To solve the problem of being unable to continuously collect data due to Instagram's strong \textbf{Bot Detection system}. The goal was to develop a robust scraper that could stably bypass bot detection and collect large-scale social relationship data \textbf{without interruption}.}
+    \resumeItem{\textbf{My Role:} Responsible for researching, prototyping, and implementing the final solution, exploring various technical approaches (\textbf{Selenium}, \textbf{requests}, \textbf{Instagrapi}, etc.) to solve the bot detection problem.}
+    \resumeItem{\textbf{Problem-Solving Process:}}
+        \resumeItemListStart
+            \resumeItem{\textbf{Trade-off Analysis (Server vs. Mobile Environment):} Confirmed that using a Python-based scraper in a server environment was ultimately blocked by bot detection. Based on the hypothesis that the 'server environment' itself was a major factor in detection, I chose a fundamental solution: to \textbf{personally migrate the Python library to Swift}, despite the high initial cost, to emulate requests from a mobile environment.}
+            \resumeItem{\textbf{Specific Implementation (How):} \textbf{Personally ported the core logic of `Instagrapi` from Python to Swift}, developing a data scraper that runs in an iOS mobile environment. During development, I fixed bugs found in the library and \textbf{contributed directly to the open-source project}.}
+        \resumeItemListEnd
+    \resumeItem{\textbf{Result \& Impact:}}
+        \resumeItemListStart
+            \resumeItem{\textbf{Core Problem Solved:} Succeeded in \textbf{stably collecting large-scale social relationship data}, which was impossible with previous methods, providing the foundation for the 'MLOps Analysis PoC' project.}
+            \resumeItem{\textbf{Demonstrated Problem-Solving Ability:} Solved a persistent external system limitation through the creative approach of porting a framework to a different language.}
+        \resumeItemListEnd
+        \hyperlink{instagram_scraper_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{postgresql}{
+    \resumeProjectHeading
+    {\textbf{Initial Data Pipeline Construction using PostgreSQL Schema Separation}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} Needed to efficiently separate and manage collected raw data and purified data. In a situation where building a separate warehouse was difficult, the goal was to build a practical pipeline that could \textbf{preserve data integrity and reliably serve data within a single DB}.}
+        \resumeItem{\textbf{My Role:} Developed the data purification logic and \textbf{personally designed and implemented an architecture that separates data layers by separating schemas within PostgreSQL}.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Trade-off Analysis (DB Separation vs. Schema Separation):} Physically separating the database had the disadvantage of doubling costs and management points. Instead, I chose the \textbf{PostgreSQL schema separation method}, which allows for logical separation with no additional cost, securing practicality and cost-efficiency.}
+                \resumeItem{
+                \textbf{Specific Implementation (How):} 
+                Created \texttt{raw\_data} and \texttt{purified\_data} schemas within \textbf{PostgreSQL}.
+                Built a pipeline that performs data purification logic using \textbf{Python's psycopg2 library} and stores the data in tables within their respective schemas.
+                }
+            \resumeItemListEnd
+        \resumeItem{\textbf{Result \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Ensured Data Integrity:} Established an environment where raw data is preserved without changes and analysts can safely use only purified data, reducing data management complexity.}
+                \resumeItem{\textbf{Paved the Way for Growth:} This experience provided a foundational understanding of the need for data warehouses, paving the way for designing more sophisticated data architectures later on.}
+            \resumeItemListEnd
+            \hyperlink{postgresql_back}{\underline{go back}}
+    \resumeItemListEnd
+    
+\resumeSubHeadingListEnd

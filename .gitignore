@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.run.xml
+*.bcf
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# Build output (regenerated from .tex)
+*.pdf
+!opic점수.pdf
+!resume_korean.pdf
+!resume_english.pdf
+
+# Editor
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Latexmk auxiliary directory
+build/

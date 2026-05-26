@@ -1,0 +1,83 @@
+%-----------EXPERIENCE-----------%
+\section{Experiences}
+
+\resumeSubHeadingListStart
+    \resumeSubheading
+    {HUINNO}{Dec 2025 -- Present}
+    {Data Engineer}{Seoul}
+    \resumeItemListStart
+        \resumeItem{Building and operating an in-house \textbf{MLOps platform} on \textbf{bare-metal Kubernetes} from scratch with \textbf{Pulumi (Python IaC)}. Sole owner across the full stack on a multi-node kubeadm cluster (GPU / storage / CPU node pools).}
+        \resumeItem{Modularized infrastructure into \textbf{9 Pulumi stacks} for \textbf{reproducible single-command deploys}. Configured \textbf{Cilium CNI} (KPR + Gateway API + LB-IPAM + L2 Announcements) and exposed \texttt{*.<internal>.*} hostnames via a single Gateway with in-cluster CA HTTPS.}
+        \resumeItem{Designed \textbf{multi-replica active-active HA} for SPoF components (\textbf{CoreDNS}, \textbf{Airflow scheduler}) so single-node failures don't interrupt pipelines. Established PriorityClass / PDB policies and codified operations into runbooks.}
+        \resumeItem{Built an \textbf{Apache Iceberg lakehouse} on \textbf{SeaweedFS} (S3-compatible) with a \textbf{Bronze / Silver / Gold} medallion architecture in production. NVMe / HDD tiering and multi-node replica volume groups co-locate hot and cold data in one cluster.}
+        \resumeItem{Enabled \textbf{ad-hoc Iceberg SQL} via \textbf{PostgreSQL + pg\_duckdb} and deployed an in-cluster \textbf{DuckDB UI} pod — shifting analyst workflow from pyiceberg code to browser SQL.}
+        \resumeItem{Deployed \textbf{Airflow 3.x} via Helm + KubernetesExecutor on split prod / staging stacks, with git-sync CD and a custom image bundling \textbf{dbt + Cosmos + internal SDK}. Wrapped Silver / Gold dbt models into Airflow TaskGroups; automated Iceberg compaction and integrity-verification DAGs.}
+        \resumeItem{Set up \textbf{KubeRay} across heterogeneous GPU nodes behind a unified worker image (CUDA 12.8 / PyTorch / ONNXRuntime / Triton) with per-GPU-type worker groups so researchers can submit distributed training jobs without re-tooling environments.}
+        \resumeItem{Integrated \textbf{DataHub} (dataset catalog + OpenLineage-driven Airflow / dbt lineage), \textbf{MLflow} (experiments / model registry), and \textbf{Prometheus + Grafana} (cluster metrics). Self-hosted Docker Registry + GitHub Actions for image build and deploy.}
+    \resumeItemListEnd
+    \resumeSubheading
+    {Cellkey}{Jul 2025 -- Dec 2025}
+    {Data Engineer}{Seocho-gu, Seoul}
+    \resumeItemListStart
+        \resumeItem{Deployed a shared-nothing \textbf{StarRocks} cluster on AWS EC2, reducing analytical query time by \textbf{80\%} (from 7s to 1.4s).}
+        \resumeItem{Designed and deployed a local data refinement pipeline using \textbf{Apache Airflow (3.x)} for automated data processing.}
+        \resumeItem{Developed and maintained \textbf{Spring Boot} APIs to provide reliable data services and system integration.}
+        \resumeItem{Maintained and optimized \textbf{AWS resources} including Lambda, Batch, and Step Functions for scalable data workflows.}
+    \resumeItemListEnd
+    \resumeSubheading
+    {Naepopquiz}{Mar 2025 -- Jun 2025}
+    {Back-End Engineer}{Freelance}
+    \resumeItemListStart
+        \resumeItem{Implemented Android \& iOS In-App Purchase API (subscriptions, renewals, cancellations)}
+        \resumeItem{Deployed a Flask-based Dockerized web server on Google Cloud Run}
+        \resumeItem{Implemented a feature to verify ownership of Firebase resources}
+        \resumeItem{Wrote unit test cases for LLM-driven API routes, services, and functions}
+        \resumeItem{Operated Firebase Firestore and Cloud Storage}
+        \resumeItem{Refactored legacy code}
+    \resumeItemListEnd
+    
+    \resumeSubheading
+    {Eazel Inc.}{Jun 2022 -- Sep 2024}
+    {Team Lead, AI Labs}{Jung-gu, Seoul}
+    \resumeItemListStart
+        \resumeItem{Oversaw the development and operation of the art market ETL data pipeline; as team lead, led architecture design, deployment, monitoring, and performance optimization}
+        \resumeItem{Built dashboards based on Flask/NextJS}
+        \resumeItem{Developed and operated auction data scrapers}
+        \resumeItem{Implemented periodic data collection, purification, and loading pipelines using Airflow}
+        \resumeItem{Implemented data purification and loading pipelines using PySpark applications on AWS EMR}
+        \resumeItem{Developed a data deduplication system using OpenAI/Facebook embedding models and improved its accuracy/speed (e.g., by applying a vector DB)}
+        \resumeItem{Managed AWS services (EC2, IAM, S3, Route53, RDS, EMR)}
+        \resumeItem{Implemented CI/CD (Continuous Deployment) using Github Actions}
+        \resumeItem{Implemented a Chatbot Prototype using LangChain and Streamlit}
+        \resumeItem{Led the implementation of a Neo4J Cypher query tool and a PostgreSQL query tool for a chatbot}
+        \resumeItem{Implemented data scraping using LangChain and Information Extraction Prompts}
+    \resumeItemListEnd
+
+    \resumeSubheading
+    {Eazel Inc.}{Oct 2021 -- Jun 2022}
+    {MLOps Engineer, MLOps}{Jung-gu, Seoul}
+    \resumeItemListStart
+        \resumeItem{Experienced in the end-to-end process from data analysis to modeling and validation (utilizing HuggingFace NLP, etc.)}
+        \resumeItem{Developed and operated Instagram data scrapers}
+        \resumeItem{Developed a social network analysis dashboard based on Flask/NextJS/CytoscapeJS and derived insights (contributed to securing Series A funding)}
+        \resumeItem{Implemented the ML Lifecycle using DVC}
+        \resumeItem{Managed data using PostgreSQL}
+    \resumeItemListEnd
+    
+    \resumeSubheading
+    {Eazel Inc.}{Jan 2019 -- Oct 2021}
+    {iOS Developer, iOS Team}{Gangnam, Seoul}
+    \resumeItemListStart
+        \resumeItem{Led the design of the API client and integrated backend logic, considering iOS app performance and scalability}
+        \resumeItem{Introduced CI/CD with Github Actions}
+        \resumeItem{Led the introduction of ReactorKit-based reactive programming and its architecture design, improving app responsiveness and maintainability}
+    \resumeItemListEnd
+    
+    \resumeSubheading
+    {Finple Inc.}{Jan 2018 -- Nov 2018}
+    {Software Engineer, DevOps}{Yeongdeungpo, Seoul}
+    \resumeItemListStart
+        \resumeItem{Maintained hybrid iOS and Android apps}
+        \resumeItem{Developed a NodeJS-based data scraper}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd

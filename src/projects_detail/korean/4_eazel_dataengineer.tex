@@ -1,0 +1,128 @@
+\resumeSubHeadingListStart
+    \resumeSubheading
+    {Data Engineer, AILabs}{Jun 2022 -- Sep 2024}
+    {}{중구, 서울}
+    \hypertarget{price_database}{
+    \resumeProjectHeading
+    {\textbf{미술품 투자 분석을 위한 통합 데이터 플랫폼 구축}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} \textbf{작가, 작품, 경매, 소셜 네트워크, 기관, 아티스트 CV 등} 미술 시장의 모든 데이터가 여러 소스에 파편화되어 있었음. 이 데이터들을 포괄하는 \textbf{신뢰도 높은 통합 데이터 파이프라인을 구축}하고, 이를 AI 및 통계 기반의 데이터 분석 플랫폼으로 활용하여 \textbf{Series B 투자 유치에 기여}하는 것을 최종 목표로 함.}
+        \resumeItem{\textbf{나의 역할:} 데이터 엔지니어링 팀 리드로서, 데이터 파이프라인의 \textbf{아키텍처 설계부터 구현, 운영, LLM 에이전트 프로토타입 개발까지} 프로젝트 전반을 주도함.}
+        \resumeItem{\textbf{문제 해결 과정:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{트레이드오프 분석 (Pandas vs. PySpark):} 프로젝트의 최종 목표는 모든 데이터를 수집하는 것이었기에, 미래에 데이터 규모가 수억 건 이상으로 커질 가능성이 높다고 \textbf{가정하고 아키텍처를 설계함}. 현재의 빠른 개발보다 미래의 \textbf{확장성(Scalability)과 신뢰성(Reliability)을 확보}하기 위해, 초기 오버헤드를 감수하고 선제적으로 \textbf{PySpark 도입을 결정}함.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} AWS EMR 클러스터가 생성될 때, \textbf{각각의 데이터 처리 단계를 정의한 Python 파일들을 EMR Step으로 순차적으로 포함하여 실행}하는 방식으로 데이터 정제 및 적재 파이프라인을 구현함. 이 파이프라인 내에서 Facebook의 \textbf{SSCD} 및 OpenAI \textbf{Embedding} 모델을 활용하고, \textbf{PGVector}의 HNSW 인덱스를 사용하여 중복 데이터를 필터링하는 시스템을 구축함.}
+
+            \resumeItemListEnd
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{비즈니스 임팩트:} 구축된 고품질의 통합 데이터 플랫폼은 회사의 핵심 자산이 되었고, \textbf{Series B 투자 유치를 성공시키는 데 결정적인 역할}을 함.}
+                \resumeItem{\textbf{기술적 성과:} PySpark를 선제적으로 도입하여, 데이터가 급증했을 때 별도의 마이그레이션 없이 안정적으로 파이프라인을 운영할 수 있는 확장 가능한 아키텍처의 기반을 마련함.}
+            \resumeItemListEnd
+        \hyperlink{price_database_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{scraper_server}{
+    \resumeProjectHeading
+    {\textbf{대규모 데이터 스크래퍼 중앙 관리 및 모니터링 서버 개발}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} 미술 시장 데이터 수집을 위해 \textbf{동시에 50개 이상의 스크래퍼 인스턴스를 운영}하게 되면서, 각 인스턴스의 상태를 개별적으로 추적하고 관리하는 리소스 소모가 컸음. 여러 스크래퍼를 중앙에서 제어하고 실시간으로 모니터링하여 \textbf{데이터 수집 파이프라인의 안정성과 운영 효율성을 극대화}하는 것을 목표로 함.}
+        \resumeItem{\textbf{나의 역할:} 서버의 전체 아키텍처 설계부터 API 엔드포인트 개발, WebSocket 통신, Nginx/HTTPS 설정 및 배포까지 \textbf{End-to-End 개발을 모두 담당}함. }
+        \resumeItem{\textbf{문제 해결 과정:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{기술적 고민 및 선택 (Why):} 실시간 상태 모니터링을 위해, 클라이언트가 주기적으로 서버 상태를 요청하는 HTTP Polling 방식보다 서버와 클라이언트 간의 양방향 통신 채널을 유지하는 \textbf{WebSocket 방식} 이 서버 부하가 적고 상태 변화를 즉각적으로 전파할 수 있어 더 효율적이라고 판단함.}
+                \resumeItem{\textbf{트레이드오프 분석 (Trade-off):} 경량 웹 프레임워크인 `Flask`와 `FastAPI`를 두고 고민함. 당시 프로젝트의 핵심은 안정적인 실시간 통신 구현이었기에, 관련 라이브러리 생태계가 성숙하고 제가 더 익숙했던 \textbf{`Flask`를 선택} 하여 개발 속도와 안정성을 우선으로 확보함.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} \textbf{`Flask`를 기반}으로 스크래퍼 제어 API를 개발하고 \textbf{`Flask-Blueprint`로 코드를 모듈화}함. \textbf{`WebSocket`을 통해} 각 스크래퍼와 연결을 유지하며 상태 및 메트릭을 실시간으로 교환하도록 구현함. 보안을 위해 로그인 정보는 \textbf{`SHA-256`으로 암호화} 하고, \textbf{`Nginx`를 리버스 프록시}로 사용하여 \textbf{`Certbot`으로 발급받은 HTTPS 인증서}를 적용함. }
+            \resumeItemListEnd
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{운영 효율성 극대화:} 수동으로 관리하던 50개 이상의 스크래퍼 인스턴스를 단일 API를 통해 중앙에서 관리할 수 있게 되어, 운영 리소스가 획기적으로 감소함.}
+                \resumeItem{\textbf{안정성 및 신뢰성 향상:} 장애 발생 시 특정 인스턴스를 즉각적으로 파악하고 원격으로 재시작할 수 있게 되어, 데이터 수집 파이프라인 전체의 안정성과 데이터 누락 방지 신뢰성이 크게 향상됨.}
+            \resumeItemListEnd
+        \hyperlink{scraper_server_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{BI_tool}{
+    \resumeProjectHeading
+    {\textbf{소셜 관계망 분석 및 데이터 정제를 위한 Full-Stack BI 툴 개발}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} ML 모델이 분석한 소셜 관계망 데이터는 복잡한 그래프 형태로, 비개발자인 미술 전문가들이 직관적으로 이해하고 분석하기 어려웠음. 전문가가 직접 데이터를 검토하고 수정(라벨링)하여 데이터 품질을 개선하는 효율적인 도구가 필요했음.}
+        \resumeItem{\textbf{나의 역할:} 데이터 구조 설계, API 개발(\textbf{Flask} ), 프론트엔드(\textbf{Next.js} ) 및 시각화(\textbf{Cytoscape/SigmaJS} ) 구현, 그리고 최종 배포(\textbf{Docker}, \textbf{Nginx} )까지 \textbf{전체 Full-Stack 개발을 주도}함.}
+        \resumeItem{\textbf{문제 해결 과정:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{기술적 고민 및 선택 (Why):} 대규모 그래프 데이터를 브라우저에서 원활하게 렌더링하는 것이 핵심 과제였음. 초기에는 \textbf{Cytoscape.js} 를 사용했으나, 노드와 엣지가 늘어나자 성능 저하가 발생하여 WebGL 기반의 \textbf{Sigma.js} 로 마이그레이션하여 성능을 개선함.}
+                \resumeItem{\textbf{트레이드오프 분석 (Trade-off):} UI 컴포넌트 개발 시, 범용 라이브러리 대신 IBM의 \textbf{Carbon Design System} 을 선택함. 국내 자료가 적어 초기 학습이 필요했지만, 데이터 시각화와 대시보드에 특화된 컴포넌트가 많아 장기적인 개발 생산성을 높일 수 있다고 판단함.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} \textbf{Flask} 로 소셜 관계 데이터와 데이터 라벨링을 위한 RESTful API를 개발함. \textbf{Next.js}와 \textbf{Carbon Design System} 으로 프론트엔드 환경 및 UI 컴포넌트를 구현함. 최종적으로 \textbf{Docker Compose} 를 이용해 Nginx, Next.js, Flask 서버를 컨테이너화하여 EC2에 배포함.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{업무 효율성 향상:} 미술 전문가들이 DB 조회나 개발자 요청 없이, 직접 BI 툴을 통해 소셜 관계망 데이터를 탐색하고 분석할 수 있게 되어 업무 시간이 획기적으로 단축됨.}
+                \resumeItem{\textbf{데이터 품질 개선:} 전문가가 시각화된 그래프를 보며 직접 데이터 오류를 수정하고 라벨링하는 기능을 제공하여, ML 모델의 학습 데이터 품질을 높이는 선순환 구조의 기반을 마련함.}
+            \resumeItemListEnd
+        \hyperlink{BI_tool_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{airflow}{
+    \resumeProjectHeading
+    {\textbf{비용 효율적인 데이터 파이프라인 자동화를 위한 Airflow 구축 및 운영}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} 데이터 수집과 정제 파이프라인이 수동으로 운영되어 비효율적이고 오류 발생 가능성이 높았음. 전체 데이터 파이프라인을 워크플로우로 정의하여 \textbf{실행, 모니터링, 재처리를 자동화}하고, \textbf{운영 비용을 최소화}하는 안정적인 스케줄링 시스템 구축을 목표로 함.}
+        \resumeItem{\textbf{나의 역할:} Airflow 인프라 설계, EC2/Docker 기반 배포, 핵심 DAG(데이터 수집, EMR 처리) 작성 및 운영까지 \textbf{워크플로우 자동화의 전 과정을 담당}함.}
+        \resumeItem{\textbf{문제 해결 과정:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{트레이드오프 분석 1 (인프라):} \textbf{AWS Managed Airflow(MWAA)}는 높은 비용 외에도, 당시 제가 선호하는 \textbf{TaskFlow API}를 사용할 수 없는 버전상의 제약이 있었음. 최신 버전을 자유롭게 사용하고 인프라 비용을 90\% 이상 절감하기 위해, 초기 구축 리소스가 더 필요하더라도 \textbf{EC2에 Docker Compose로 직접 배포}하는 방식을 선택함.}
+                \resumeItem{\textbf{트레이드오프 분석 2 (Executor):} 병렬 처리를 위한 \textbf{Celery Executor}는 추가 인프라가 필요해 복잡성이 높다고 판단. 당시 Task의 순차적 안정성이 더 중요했기에, 가장 단순하고 안정적인 \textbf{Sequential Executor}를 선택하여 인프라 복잡도를 최소화함.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} \textbf{Docker Compose}를 이용해 Airflow를 EC2에 배포. 스크래핑 DAG는 \textbf{PythonOperator}를 사용하여, 직접 로직을 실행하는 것이 아니라 외부의 \textbf{스크래퍼 중앙 관리 서버의 API를 호출}하여 작업을 스케줄링하는 방식으로 작성함. 데이터 정제 DAG는 \textbf{boto3}로 EMR 잡(Job)을 트리거하도록 구현함.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{운영 효율성 극대화:} 매일 수동으로 실행하던 데이터 작업을 \textbf{완전 자동화}하여, 관련 운영에 소요되던 시간을 95\% 이상 단축함.}
+                \resumeItem{\textbf{안정성 및 관측 가능성 향상:} Airflow UI를 통해 모든 파이프라인의 실행 상태와 로그를 중앙에서 모니터링할 수 있게 되어, 장애 발생 시 원인 파악 및 대응 시간이 크게 단축됨.}
+            \resumeItemListEnd
+            \hyperlink{airflow_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{removing_duplicates}{
+    \resumeProjectHeading
+    {\textbf{임베딩 기반 이미지/텍스트 중복 제거 시스템 개발}}{}
+    }
+    \resumeItemListStart
+    \resumeItem{\textbf{핵심 문제 및 목표:} 초기 중복 제거 시스템은 DB에서 임베딩을 다운로드하고, 데이터 타입을 변환한 후, 외부에서 인덱스를 생성하는 \textbf{불필요한 오버헤드}가 발생. 이 비효율을 제거하고 DB 내에서 모든 로직을 처리하여 \textbf{파이프라인을 최적화}하고 데이터 품질을 높이는 것을 목표로 함.}
+    \resumeItem{\textbf{나의 역할:} ML 엔지니어가 개발한 초기 시스템의 파이프라인 오버헤드를 분석하고, \textbf{PGVector 기반의 새로운 아키텍처를 설계 및 도입하여 최적화하는 작업을 주도}함.}
+    \resumeItem{\textbf{문제 해결 과정:}}
+        \resumeItemListStart
+            \resumeItem{\textbf{기술적 고민 (기존 방식의 문제점):} 초기 \textbf{`Faiss-CPU`} 기반 시스템은 PostgreSQL에서 데이터를 꺼내고, \textbf{호환되지 않는 데이터 타입을 변환}한 후, 로컬에서 인덱스를 생성해야 하는 비효율적인 구조였음.}
+            \resumeItem{\textbf{구체적인 구현 내용 (How):} 이 오버헤드를 해결하기 위해 모든 로직을 DB 내부에서 처리하도록 변경. 기존 \textbf{`Numpy` 배열을 `pgvector::vector` 타입으로 마이그레이션}하고, \textbf{`PGVector`의 `IVFFlat` 및 `HNSW` 인덱스를 생성}하여 시스템을 재구축함.}
+        \resumeItemListEnd
+    \resumeItem{\textbf{결과 및 임팩트:}}
+        \resumeItemListStart
+            \resumeItem{\textbf{운영 효율성 및 비용 절감:} 불필요한 데이터 전송 및 변환 과정을 완전히 제거하여, \textbf{전체 파이프라인의 오버헤드를 50\% 이상 절감}하고 구조를 단순화함.}
+            \resumeItem{\textbf{데이터 품질 향상:} 최적화된 시스템을 통해 데이터의 정합성과 신뢰도를 획기적으로 향상시켜, 고품질의 Price Database 구축에 핵심적으로 기여함.}
+        \resumeItemListEnd
+    \hyperlink{removing_duplicates_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{data_warehouse}{
+    \resumeProjectHeading
+    {\textbf{비용 최적화 및 데이터 신뢰도 향상을 위한 데이터 웨어하우스 재설계}}{}
+    }
+    \resumeItemListStart
+    \resumeItem{\textbf{핵심 문제 및 목표:} 기존의 단일 RDS 중심 아키텍처는 \textbf{데이터 중복 및 불필요한 비용 문제}가 심각했음.  데이터 처리 단계별 저장소를 분리하고 \textbf{SSoT(Single Source of Truth) 기반의 아키텍처}를 도입하여,  데이터 신뢰도 향상과 운영 비용 절감을 목표로 함.}
+    \resumeItem{\textbf{나의 역할:} 데이터 파이프라인의 문제점을 분석하고, 비용 절감 및 신뢰도 향상을 위한 \textbf{데이터 웨어하우스 구조 재설계를 주도}함. }
+    \resumeItem{\textbf{문제 해결 과정:}}
+        \resumeItemListStart
+            \resumeItem{\textbf{트레이드오프 분석 (RDS vs. S3 Data Lake):} 기존 RDS 구조는 초기 개발이 빠른 장점이 있으나, 장기적인 비용 및 확장성 문제가 명확했음. 초기 마이그레이션 비용을 감수하더라도, 저렴한 \textbf{S3를 데이터 레이크로 도입}하여  장기적인 스토리지 비용 절감 및 관리 유연성을 확보하는 방향으로 결정함.}
+            \resumeItem{\textbf{구체적인 구현 내용 (How):} \textbf{DBDiagram} 툴을 사용하여 DataSource, Data Warehouse, Data Mart 계층을 시각적으로 설계함.  데이터 중복을 통합 관리하기 위한 \textbf{SSoT 테이블을 포함하여 약 50개의 테이블 스키마를 설계}함. }
+        \resumeItemListEnd
+    \resumeItem{\textbf{결과 및 임팩트:}}
+        \resumeItemListStart
+            \resumeItem{\textbf{비용 절감 기반 마련:} S3 데이터 레이크 도입을 통해 기존 아키텍처 대비 \textbf{예상 스토리지 비용을 획기적으로 절감}할 수 있는 기반을 마련함. }
+            \resumeItem{\textbf{데이터 신뢰도 향상:} \textbf{SSoT 테이블 설계}를 통해 데이터 중복을 체계적으로 관리하고, 데이터의 정합성과 신뢰도를 높일 수 있는 구조를 확립함. }
+        \resumeItemListEnd
+        \hyperlink{data_warehouse_back}{\underline{go back}}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd

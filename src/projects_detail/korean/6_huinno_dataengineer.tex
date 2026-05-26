@@ -1,0 +1,103 @@
+\resumeSubHeadingListStart
+    \resumeSubheading
+    {Data Engineer, MLOps Platform}{Dec 2025 -- Present}
+    {}{서울}
+
+    \resumeProjectHeading
+    {\textbf{베어메탈 K8s 위의 In-House MLOps 플랫폼 설계 \& 운영 (Pulumi IaC)}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} ML 연구자가 손쉽게 분산 학습을 submit 하고, 데이터 엔지니어가 lakehouse / 분석 워크로드를 안정적으로 운영할 수 있는 \textbf{사내 전용 MLOps 플랫폼}을 베어메탈 자원 위에 처음부터 구축해야 했음. 외부 매니지드 서비스 의존 없이 \textbf{저장 · 카탈로그 · 계보 · 오케스트레이션 · 분산 학습 · 관측까지 풀스택을 단일 클러스터에서 일관되게} 운영하는 것이 목표.}
+        \resumeItem{\textbf{나의 역할:} 다중 노드(GPU · 스토리지 · CPU 분리) kubeadm 클러스터 위에 \textbf{전 스택을 단일 담당}으로 설계 · 구축 · 운영. IaC, 네트워크, HA, lakehouse, 오케스트레이션, 분산 학습, 관측 모두 포함.}
+        \resumeItem{\textbf{문제 해결 과정:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{트레이드오프 분석 (Managed vs. Self-hosted):} 매니지드 K8s / 매니지드 lakehouse 는 빠른 출발이 가능하지만, 사내 자원·보안 요구사항 및 장기 운영 비용을 감안하면 \textbf{베어메탈 self-hosted 가 우월}하다고 판단. 초기 구축 부담을 감수하고 모든 layer 를 in-cluster 로 가져감.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} \textbf{Pulumi(Python)} 로 인프라 코드를 \textbf{9개 stack}(platform → base → storage → catalog → lineage → orchestration → staging → compute → mlops → cicd)으로 모듈화. 단일 명령으로 reproducible deploy 가 가능하도록 stack 간 reference 와 dependency 를 명시적으로 관리. \textbf{Cilium CNI}(KPR + Gateway API + LB-IPAM + L2 Announcements) 기반 네트워크 구성, 단일 Gateway 로 \texttt{*.<internal>.*} 호스트명을 자체 CA HTTPS 로 일괄 노출.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{재현 가능한 IaC 체계 정착:} 인프라 변경이 PR 기반으로 추적 가능하고, 신규 환경(예: 별도 staging) 도 stack 조합으로 즉시 재구성 가능.}
+                \resumeItem{\textbf{운영 자산화:} 모든 호스트명이 단일 Gateway 로 노출되어 인증서 / 라우팅 관리가 일원화되고, 클러스터 외부 의존성을 최소화.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{SPoF 제거를 위한 HA 아키텍처 설계 (CoreDNS, Airflow scheduler Active-Active)}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} 단일 노드 사고가 발생해도 \textbf{학습 데이터 파이프라인이 정지하지 않아야} 했음. 클러스터 내 핵심 컴포넌트(CoreDNS, Airflow scheduler)가 단일 인스턴스로만 운영되면 노드 장애 시 전체 워크로드가 중단되는 구조였음.}
+        \resumeItem{\textbf{나의 역할:} SPoF 후보를 식별하고, 컴포넌트별로 \textbf{multi-node active-active 이중화 정책}을 설계 \& 도입. 운영 절차를 runbook 으로 문서화.}
+        \resumeItem{\textbf{문제 해결 과정:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{기술적 고민 및 선택 (Why):} Active-passive 페일오버는 detection / failover lag 가 길어 짧은 다운타임을 피할 수 없음. 학습 데이터 파이프라인 특성상 \textbf{재시작 후 catch-up 비용이 크기 때문에}, 다소 운영 복잡도가 올라가더라도 \textbf{active-active 다중 인스턴스}를 선택.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} CoreDNS · Airflow scheduler 등 SPoF 컴포넌트를 multi-replica 로 배포하고, \textbf{PriorityClass / PodDisruptionBudget(PDB)} 정책을 클러스터 전체에 적용하여 노드 drain / upgrade 시점에도 최소 1개 replica 가 항상 살아있도록 보장. 운영 절차(drain 순서, scheduler 재시작 시 점검 항목, lakehouse 정합성 체크)를 \textbf{runbook 으로 문서화}하여 다음 담당자가 동일 상황을 즉시 follow 가능하게 함.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{단일 노드 장애 → 무중단 운영:} 단일 워커 노드 사고 / 정기 upgrade 시에도 학습 DAG 와 dataset 동기화가 중단 없이 진행됨.}
+                \resumeItem{\textbf{운영 지식의 자산화:} runbook 정착으로 인계 / 협업 시 학습 곡선이 짧아지고, 동일 사고 재발 시 즉시 대응 가능한 체계 마련.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{SeaweedFS + Apache Iceberg Lakehouse 구축 (Bronze/Silver/Gold 메달리온)}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} 학습 데이터 / 분석 데이터의 raw 적재 \textbf{·} 정제 \textbf{·} 서빙을 단일 lakehouse 에서 일관되게 관리해야 했음. 외부 클라우드 의존 없이 \textbf{온프레미스에서 S3 호환 분산 스토리지 + 테이블 포맷}으로 lakehouse 를 구성하는 것이 목표.}
+        \resumeItem{\textbf{나의 역할:} 스토리지 layer 선정 / 구축, Iceberg 메달리온 아키텍처 설계, ad-hoc 쿼리 layer 도입까지 \textbf{lakehouse 전체 책임}.}
+        \resumeItem{\textbf{문제 해결 과정:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{트레이드오프 분석 (MinIO vs. SeaweedFS):} 두 대안 모두 S3 호환이지만, hot/cold data 를 \textbf{tier 별로 효율 관리}해야 하는 요구에 따라 \textbf{NVMe / HDD 디스크 tier 분리}와 multi-node replica volume group 구성이 자연스러운 \textbf{SeaweedFS} 를 선택.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} SeaweedFS 위에 Apache Iceberg 를 올려 \textbf{Bronze / Silver / Gold 메달리온 아키텍처}를 production 운영. ad-hoc 분석 needs 를 만족시키기 위해 \textbf{PostgreSQL + pg\_duckdb} 로 Iceberg 데이터를 직접 SQL 조회 가능하게 구성하고, 분석가용 \textbf{DuckDB UI 를 클러스터 내 Pod 로 배포}(nginx basic auth + 자동 token inject) — 기존에 pyiceberg 코드를 작성해야 했던 단계를 \textbf{브라우저 SQL 한 줄로 단축}.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{분석 사이클 단축:} 분석가가 더 이상 pyiceberg / Spark 환경 세팅 없이 브라우저에서 즉시 ad-hoc SQL 실행 가능.}
+                \resumeItem{\textbf{스토리지 비용 효율화:} hot data 는 NVMe, 보관용 cold data 는 HDD tier 로 자동 배치되어 단일 클러스터에서 비용 / 성능 균형을 맞춤.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Airflow 3.x + dbt + Cosmos 기반 오케스트레이션 / 변환 파이프라인}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} Silver / Gold 변환과 Iceberg compaction · 정합성 검증을 \textbf{표준화된 워크플로우}로 운영해야 했음. dbt 모델을 Airflow 위에서 자연스럽게 실행하고, prod / staging 환경을 분리하여 \textbf{릴리즈 위험 없이 마이너 / 패치 업그레이드}를 적용하는 체계 구축이 목표.}
+        \resumeItem{\textbf{나의 역할:} Airflow Helm 배포, 커스텀 이미지 구성, dbt + Cosmos 통합, 환경 분리, 업그레이드 표준화 전 과정 담당.}
+        \resumeItem{\textbf{문제 해결 과정:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{기술적 고민 및 선택 (Why):} \textbf{KubernetesExecutor} 는 task 단위로 pod 격리가 가능해 리소스 관리와 의존성 충돌 회피에 유리. 사내 dbt 프로젝트 + 사내 SDK 를 같은 이미지에 번들링하여 \textbf{모든 task 가 동일한 의존성 그래프}로 동작하도록 구성.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} Airflow 3.x 를 \textbf{Helm + KubernetesExecutor} 로 prod / staging 분리 배포, \textbf{git-sync 기반 CD} + 커스텀 이미지(dbt + Astronomer Cosmos + 사내 SDK) 운영. \textbf{dbt + Cosmos} 로 Silver / Gold 변환을 TaskGroup 단위 통합, Iceberg compaction · 정합성 검증 DAG 자동화. 모든 변경은 \textbf{staging-first → prod 순차 적용 패턴}으로 표준화.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{변환 파이프라인 자동화:} 데이터 정합성 / compaction 등 운영 task 가 DAG 화되어 수동 작업 / 실수 가능성이 사라짐.}
+                \resumeItem{\textbf{안전한 업그레이드 체계:} staging 검증 후 prod 적용 패턴으로 Airflow / dbt / 의존성 마이너 업그레이드를 무중단으로 진행 가능.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{KubeRay 기반 비대칭 GPU 노드 분산 학습 환경}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} 사내에 \textbf{서로 다른 SKU 의 GPU 노드들이 혼재}된 상태에서, ML 연구자가 환경 세팅에 시간을 쓰지 않고 \textbf{분산 학습 작업을 손쉽게 submit} 가능하도록 표준화된 학습 환경을 제공해야 했음.}
+        \resumeItem{\textbf{나의 역할:} Ray cluster 구성, 학습 이미지 일원화, GPU type 별 worker group 정책 설계, 사내 학습 SDK 자동 설치 파이프라인 구성.}
+        \resumeItem{\textbf{문제 해결 과정:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{기술적 고민 및 선택 (Why):} 노드별로 환경을 직접 세팅하게 두면 의존성 / CUDA 버전 충돌이 반복 발생. \textbf{단일 worker 이미지로 환경을 일원화}하고 GPU type 만 worker group 단위로 분리하는 방식이 운영 비용과 사용자 학습 곡선을 모두 줄임.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} \textbf{KubeRay} 로 비대칭 GPU 노드 위에 Ray cluster 구성, \textbf{단일 worker 이미지}(CUDA 12.8 · Python 3.12 · PyTorch · ONNXRuntime · Triton)로 학습 환경 일원화. GPU type 별 worker group 분리 + 사내 학습 SDK install 자동화로 ML 연구자가 코드 변경 없이 분산 학습을 submit 가능하게 함.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{환경 세팅 비용 제거:} 분산 학습 시작까지 걸리던 환경 세팅 단계가 사라지고, 연구자가 코드 작성에 집중 가능.}
+                \resumeItem{\textbf{비대칭 자원 활용:} 서로 다른 GPU SKU 를 단일 Ray cluster 안에서 함께 활용해 클러스터 자원 활용률 향상.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{DataHub / MLflow / Prometheus 통합 카탈로그 \& 관측 체계}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{핵심 문제 및 목표:} dataset 카탈로그, ML 실험 / 모델 레지스트리, 클러스터 메트릭이 모두 분산되어 있어 \textbf{한 곳에서 데이터 흐름과 모델 lineage 를 추적할 수 있는 통합 관측 체계}가 필요했음.}
+        \resumeItem{\textbf{나의 역할:} DataHub 배포 \& OpenLineage 연동, MLflow 운영, Prometheus / Grafana 클러스터 메트릭 표준화, self-hosted Docker Registry + GitHub Actions CI/CD 구성.}
+        \resumeItem{\textbf{구체적인 구현 내용 (How):} \textbf{DataHub} 로 dataset 카탈로그 관리 + \textbf{OpenLineage} 기반 Airflow / dbt 계보 자동 수집. \textbf{MLflow} 로 실험 / 모델 레지스트리 운영. \textbf{Prometheus + Grafana} 로 클러스터 메트릭 표준화. \textbf{Self-hosted Docker Registry + GitHub Actions} 로 image build · deploy 자동화.}
+        \resumeItem{\textbf{결과 및 임팩트:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{데이터 \& 모델 lineage 가시화:} dataset 부터 모델까지 흐름을 한 화면에서 추적 가능, 변경 영향 분석이 수동 추적에서 카탈로그 검색으로 단축.}
+                \resumeItem{\textbf{이미지 공급망 단순화:} 자체 Registry + GitHub Actions 로 인프라 / 어플리케이션 이미지 build · deploy 가 단일 워크플로우로 통합.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+\resumeSubHeadingListEnd

@@ -1,0 +1,103 @@
+\resumeSubHeadingListStart
+    \resumeSubheading
+    {Data Engineer, MLOps Platform}{Dec 2025 -- Present}
+    {}{Seoul}
+
+    \resumeProjectHeading
+    {\textbf{In-House MLOps Platform on Bare-Metal Kubernetes (Pulumi IaC)}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} Build an \textbf{in-house MLOps platform} from scratch on bare-metal resources so ML researchers can submit distributed training jobs and data engineers can run lakehouse / analytics workloads reliably. The goal was to operate \textbf{storage, catalog, lineage, orchestration, distributed training, and observability consistently in a single cluster}, without depending on external managed services.}
+        \resumeItem{\textbf{My Role:} Sole owner across the full stack \textbf{designing, building, and operating} every layer on a multi-node kubeadm cluster (GPU / storage / CPU node pools) -- IaC, networking, HA, lakehouse, orchestration, distributed training, observability.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Trade-off (Managed vs. Self-hosted):} Managed K8s / managed lakehouse offers a fast start, but given internal resource and security requirements plus long-term cost, \textbf{bare-metal self-hosted} was the superior choice. Accepted higher up-front investment to keep every layer in-cluster.}
+                \resumeItem{\textbf{Implementation (How):} Modularized infrastructure into \textbf{9 Pulumi stacks} (platform → base → storage → catalog → lineage → orchestration → staging → compute → mlops → cicd) with explicit cross-stack references for reproducible single-command deploys. Built networking on \textbf{Cilium CNI} (KPR + Gateway API + LB-IPAM + L2 Announcements); exposed \texttt{*.<internal>.*} hostnames via a single Gateway with in-cluster CA HTTPS.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Results \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Reproducible IaC:} Infrastructure changes are tracked via PRs; new environments (e.g., separate staging) can be reconstituted instantly from stack combinations.}
+                \resumeItem{\textbf{Unified operations:} All hostnames exposed through one Gateway centralizes certificate and routing management, and minimizes external dependencies.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Active-Active HA Architecture for SPoF Components (CoreDNS, Airflow scheduler)}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} Training data pipelines must \textbf{keep running through single-node failures}. Critical in-cluster components (CoreDNS, Airflow scheduler) running as single instances meant any node fault could halt the entire workload.}
+        \resumeItem{\textbf{My Role:} Identified SPoF candidates and designed / introduced \textbf{multi-node active-active redundancy policies} per component; codified operations into runbooks.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Why active-active:} Active-passive failover has unavoidable detection / failover lag, and our training pipelines have \textbf{expensive catch-up costs after a restart}. Chose multi-instance \textbf{active-active} even at the cost of more operational complexity.}
+                \resumeItem{\textbf{Implementation (How):} Ran SPoF components (CoreDNS, Airflow scheduler) as multi-replica deployments; applied \textbf{PriorityClass / PodDisruptionBudget (PDB)} policies cluster-wide so at least one replica stays alive across node drains / upgrades. Documented operational procedures (drain order, scheduler-restart checks, lakehouse integrity checks) into \textbf{runbooks} so the next on-call engineer can follow the same path immediately.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Results \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Uninterrupted operations through node failure:} Training DAGs and dataset sync continue through single-node faults and routine upgrades.}
+                \resumeItem{\textbf{Operational knowledge captured:} Runbooks shorten the learning curve for hand-offs and let recurring incidents be resolved with minimal lead time.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{SeaweedFS + Apache Iceberg Lakehouse (Bronze / Silver / Gold Medallion)}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} Unify raw ingestion, refinement, and serving of training / analytics data in a single lakehouse. The goal was to assemble an \textbf{on-prem S3-compatible distributed storage + table format} lakehouse without external cloud dependency.}
+        \resumeItem{\textbf{My Role:} Full ownership of the lakehouse layer -- storage selection \& provisioning, Iceberg medallion architecture, and ad-hoc query enablement.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Trade-off (MinIO vs. SeaweedFS):} Both are S3-compatible, but the need to manage hot / cold data efficiently across \textbf{NVMe / HDD disk tiers} and multi-node replica volume groups was a more natural fit for \textbf{SeaweedFS}.}
+                \resumeItem{\textbf{Implementation (How):} Built an \textbf{Apache Iceberg lakehouse} on SeaweedFS with a \textbf{Bronze / Silver / Gold medallion architecture} in production. To satisfy ad-hoc analytics needs, enabled direct SQL access to Iceberg via \textbf{PostgreSQL + pg\_duckdb}, and deployed an analyst-facing \textbf{DuckDB UI as an in-cluster Pod} (nginx basic auth + automatic token injection) -- collapsing the previous "write pyiceberg code" step into a one-line browser SQL query.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Results \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Faster analytics cycles:} Analysts no longer need to set up pyiceberg / Spark environments -- they run ad-hoc SQL directly in the browser.}
+                \resumeItem{\textbf{Storage cost efficiency:} Hot data lands on NVMe, cold archival data on HDD tiers, balancing cost and performance in a single cluster.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Airflow 3.x + dbt + Cosmos Orchestration / Transformation Pipeline}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} Operationalize Silver / Gold transformations plus Iceberg compaction and integrity verification as \textbf{standardized workflows}. Run dbt models naturally inside Airflow and separate prod / staging environments so \textbf{minor / patch upgrades ship without release risk}.}
+        \resumeItem{\textbf{My Role:} Owned the entire path -- Airflow Helm deployment, custom image, dbt + Cosmos integration, environment split, and upgrade standardization.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Why KubernetesExecutor:} Per-task pod isolation simplifies resource management and avoids dependency conflicts. Bundled the in-house dbt project + internal SDK into the same image so \textbf{every task runs against an identical dependency graph}.}
+                \resumeItem{\textbf{Implementation (How):} Deployed Airflow 3.x via \textbf{Helm + KubernetesExecutor} on split prod / staging stacks, with \textbf{git-sync CD} and a custom image bundling dbt + Astronomer Cosmos + internal SDK. Wrapped Silver / Gold dbt models into Airflow TaskGroups; automated Iceberg compaction and integrity-verification DAGs. Standardized all changes to the \textbf{staging-first → prod-sequential} pattern.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Results \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Automated transformation pipeline:} Integrity / compaction tasks moved from manual operations into DAGs, removing room for human error.}
+                \resumeItem{\textbf{Safe upgrade path:} Minor upgrades of Airflow, dbt, or dependencies can ship without downtime via staging-first validation.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Distributed Training on Heterogeneous GPUs with KubeRay}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} The cluster mixes \textbf{heterogeneous GPU node SKUs}; ML researchers should be able to \textbf{submit distributed training jobs without re-tooling their environment} every time.}
+        \resumeItem{\textbf{My Role:} Ray cluster setup, unified training image, GPU-type-aware worker group policy, and automated in-house SDK installation pipeline.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Why a unified image:} Letting users set up environments per node causes recurring CUDA / dependency conflicts. \textbf{Unifying the worker image} and splitting only by GPU type via worker groups minimized operational cost and user friction.}
+                \resumeItem{\textbf{Implementation (How):} Configured \textbf{KubeRay} over heterogeneous GPU nodes with a single worker image (CUDA 12.8 · Python 3.12 · PyTorch · ONNXRuntime · Triton); split worker groups by GPU type and automated internal training SDK installation so researchers submit jobs without code changes.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Results \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Environment setup cost eliminated:} The setup step before distributed training disappeared; researchers focus on the code.}
+                \resumeItem{\textbf{Asymmetric resource utilization:} Different GPU SKUs are jointly utilized inside a single Ray cluster, improving overall cluster utilization.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Integrated Catalog \& Observability with DataHub / MLflow / Prometheus}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} Dataset catalog, ML experiments / model registry, and cluster metrics were scattered. Needed \textbf{a unified observability layer where data flow and model lineage can be traced in one place}.}
+        \resumeItem{\textbf{My Role:} DataHub deployment + OpenLineage integration, MLflow operation, Prometheus / Grafana cluster-metric standardization, self-hosted Docker Registry + GitHub Actions CI/CD.}
+        \resumeItem{\textbf{Implementation (How):} \textbf{DataHub} for dataset catalog + \textbf{OpenLineage}-driven Airflow / dbt lineage collection; \textbf{MLflow} for experiments and model registry; \textbf{Prometheus + Grafana} for cluster metrics; \textbf{self-hosted Docker Registry + GitHub Actions} for unified image build and deploy.}
+        \resumeItem{\textbf{Results \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Data + model lineage visibility:} Flow from dataset to model is traceable in a single view; change-impact analysis moves from manual tracing to catalog search.}
+                \resumeItem{\textbf{Simplified image supply chain:} Infra and application image build / deploy unified into a single CI workflow with the self-hosted Registry.}
+            \resumeItemListEnd
+    \resumeItemListEnd
+\resumeSubHeadingListEnd

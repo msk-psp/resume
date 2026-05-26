@@ -1,0 +1,124 @@
+\resumeSubHeadingListStart
+    \hypertarget{price_database}{
+    \resumeProjectHeading
+    {\textbf{Integrated Data Platform for Art Investment Analysis}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} All art market data, including \textbf{artists, artworks, auctions, social networks, institutions, and artist CVs}, was fragmented across multiple sources. The final goal was to \textbf{build a reliable, integrated data pipeline} to encompass all this data, utilize it as an AI and statistics-based analysis platform, and \textbf{contribute to securing Series B funding}.}
+        \resumeItem{\textbf{My Role:} As the Data Engineering Team Lead, I led the entire project, from the data pipeline's \textbf{architecture design to its implementation, operation, and the development of an LLM agent prototype}.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Trade-off Analysis (Pandas vs. PySpark):} Since the project's final goal was to collect all data, I \textbf{designed the architecture assuming} the high probability that the data scale would grow to hundreds of millions of records in the future. To secure future \textbf{scalability and reliability} over current development speed, I made the decision to proactively \textbf{adopt PySpark}, despite the higher initial overhead.}
+                \resumeItem{\textbf{Specific Implementation (How):} Implemented the data purification and loading pipeline by having the \textbf{Python files that define each data processing stage included and executed sequentially as EMR Steps} when the AWS EMR cluster is instantiated. Within this pipeline, I built a system that utilized Facebook's \textbf{SSCD} and OpenAI's \textbf{Embedding} models and filtered duplicate data using \textbf{PGVector}'s HNSW index.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Result \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Business Impact:} The high-quality, integrated data platform that was built became a core company asset and played a \textbf{decisive role in successfully securing Series B funding}.}
+                \resumeItem{\textbf{Technical Achievement:} By proactively adopting PySpark, I established the foundation for a scalable architecture that could stably operate the pipeline without a separate migration, even as data volume surged.}
+            \resumeItemListEnd
+            \hyperlink{price_database_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{scraper_server}{
+    \resumeProjectHeading
+    {\textbf{Central Management \& Monitoring Server for Large-Scale Data Scrapers}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} As we operated \textbf{over 50 scraper instances simultaneously} for data collection, managing the status of each instance individually consumed significant resources. The goal was to \textbf{maximize the stability and operational efficiency of the data collection pipeline} by building a server to centrally control and monitor all scrapers in real-time.}
+        \resumeItem{\textbf{My Role:} I was responsible for the \textbf{entire End-to-End development}, from the server's architecture design to API endpoint development, WebSocket communication, and Nginx/HTTPS deployment.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Technical Consideration (Why):} Judged that a \textbf{WebSocket} approach, which maintains a persistent bidirectional channel, was more efficient for real-time monitoring than HTTP Polling, as it reduces server load and propagates status changes instantly.}
+                \resumeItem{\textbf{Trade-off Analysis (Trade-off):} Considered `Flask` and `FastAPI`. As the project's core need was stable real-time communication over complex async logic, I \textbf{chose `Flask`}, which I was more familiar with and had a more mature library ecosystem (Flask-SocketIO), to prioritize development speed and stability.}
+                \resumeItem{\textbf{Specific Implementation (How):} Developed scraper control APIs based on \textbf{`Flask`} and modularized the code with \textbf{`Flask-Blueprint`}. Implemented real-time status/metric exchange via \textbf{`WebSocket`}. Secured login credentials via \textbf{`SHA-256` encryption} and applied an HTTPS certificate from \textbf{`Certbot`} using \textbf{`Nginx`} as a reverse proxy.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Result \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Maximized Operational Efficiency:} Dramatically reduced operational resources by enabling central management of over 50 scraper instances via a single API, which were previously managed manually.}
+                \resumeItem{\textbf{Improved Stability \& Reliability:} Significantly improved the data collection pipeline's overall stability and reliability by enabling immediate identification and remote restart of failed instances.}
+            \resumeItemListEnd
+            \hyperlink{scraper_server_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{BI_tool}{
+    \resumeProjectHeading
+    {\textbf{Full-Stack BI Tool for Social Network Analysis and Data Purification}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} The complex graph data from ML models was difficult for non-developer art experts to analyze. An efficient tool was needed for them to visually explore the network and simultaneously label data to improve its quality.}
+        \resumeItem{\textbf{My Role:} \textbf{Led the entire Full-Stack development}, from data structure design and API development (\textbf{Flask}) to frontend (\textbf{Next.js}), visualization (\textbf{Cytoscape/SigmaJS}), and final deployment (\textbf{Docker}, \textbf{Nginx}).}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Technical Consideration (Why):} The key challenge was smoothly rendering large-scale graphs in a browser. I initially used \textbf{Cytoscape.js}, but migrated to the WebGL-based \textbf{Sigma.js} to improve performance when the number of nodes and edges grew.}
+                \resumeItem{\textbf{Trade-off Analysis (Trade-off):} Chose IBM's \textbf{Carbon Design System} over more common UI libraries. Despite an initial learning curve due to fewer resources, I judged it would improve long-term productivity with its specialized components for data visualization dashboards.}
+                \resumeItem{\textbf{Specific Implementation (How):} Developed RESTful APIs for social network and labeling data with \textbf{Flask}. Built the frontend with \textbf{Next.js} and UI components with \textbf{Carbon Design System}. Finally, containerized and deployed the Nginx, Next.js, and Flask servers on an EC2 instance using \textbf{Docker Compose}.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Result \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Improved Work Efficiency:} Dramatically reduced the time required for analysis by enabling art experts to directly explore social network data through the BI tool, instead of requesting it from developers.}
+                \resumeItem{\textbf{Improved Data Quality:} Provided a feature for experts to directly correct and label data, which \textbf{contributed to improving the quality of training data for the ML model} and created a foundation for a virtuous cycle of data purification.}
+            \resumeItemListEnd
+            \hyperlink{BI_tool_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{airflow}{
+    \resumeProjectHeading
+    {\textbf{Cost-Effective Airflow Implementation for Data Pipeline Automation}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} The manual operation of the data collection and purification pipeline was inefficient and prone to errors. The goal was to build a stable scheduling system to \textbf{automate execution, monitoring, and reprocessing} while \textbf{minimizing operational costs}.}
+        \resumeItem{\textbf{My Role:} I was responsible for the \textbf{entire workflow automation process}, including Airflow infrastructure design, EC2/Docker-based deployment, and authoring core DAGs.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Trade-off 1 (Infrastructure):} Chose to \textbf{deploy Airflow directly on EC2 with Docker Compose}, which required more initial setup effort, to reduce infrastructure costs by over 90\% compared to the expensive \textbf{AWS Managed Airflow (MWAA)}. This was also driven by MWAA's version constraints which did not support my preferred \textbf{TaskFlow API}.}
+                \resumeItem{\textbf{Trade-off 2 (Executor):} Chose the simplest and most stable \textbf{Sequential Executor} to minimize infrastructure complexity, as the project's core need was sequential stability over the parallel processing offered by the more complex \textbf{Celery Executor}.}
+                \resumeItem{\textbf{Specific Implementation (How):} Deployed Airflow on EC2 using \textbf{Docker Compose}. Authored a scraping DAG that calls the scraper management server's API via a \textbf{PythonOperator}, and a data purification DAG that triggers an EMR job using \textbf{boto3}.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Result \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Maximized Operational Efficiency:} \textbf{Fully automated} the daily manual data tasks, reducing the time spent on related operations by over 95\%.}
+                \resumeItem{\textbf{Improved Stability \& Observability:} Enabled central monitoring of all pipeline statuses and logs via the Airflow UI, significantly reducing the time to identify and respond to failures.}
+            \resumeItemListEnd
+            \hyperlink{airflow_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{removing_duplicates}{
+    \resumeProjectHeading
+    {\textbf{Embedding-based Image/Text Deduplication System Development and Optimization}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} The initial deduplication system had significant \textbf{unnecessary overhead}, as it required downloading embeddings from the DB, converting data types, and creating an index externally. The goal was to \textbf{optimize the pipeline} and improve data quality by handling all logic within the database.}
+        \resumeItem{\textbf{My Role:} Analyzed the pipeline overhead of the initial system developed by an ML engineer and \textbf{led the design and implementation of a new, optimized architecture based on PGVector}.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Technical Consideration (Problem with old way):} The initial \textbf{`Faiss-CPU`}-based system was inefficient as it required pulling data from PostgreSQL and \textbf{converting incompatible data types} before creating an index locally.}
+                \resumeItem{\textbf{Specific Implementation (How):} To solve this overhead, I changed the process to handle all logic inside the DB. I performed a data migration from the existing \textbf{`Numpy` array to the `pgvector::vector` type} and rebuilt the system by creating \textbf{`PGVector`'s `IVFFlat` and `HNSW` indexes}.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Result \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Improved Operational Efficiency \& Cost Savings:} By completely eliminating the unnecessary data transfer and conversion steps, I \textbf{reduced the overall pipeline overhead by over 50\%} and simplified the architecture.}
+                \resumeItem{\textbf{Improved Data Quality:} The optimized system dramatically improved data consistency and reliability, playing a key role in building a high-quality Price Database.}
+            \resumeItemListEnd
+        \hyperlink{removing_duplicates_back}{\underline{go back}}
+    \resumeItemListEnd
+
+    \hypertarget{data_warehouse}{
+    \resumeProjectHeading
+    {\textbf{Data Warehouse Redesign for Cost Optimization and Data Reliability}}{}
+    }
+    \resumeItemListStart
+        \resumeItem{\textbf{Core Problem \& Goal:} The existing single RDS-centric architecture suffered from severe \textbf{data duplication and unnecessary cost issues}. The goal was to improve data reliability and reduce operational costs by separating storage layers for each data processing stage and introducing an \textbf{architecture based on a Single Source of Truth (SSoT)}.}
+        \resumeItem{\textbf{My Role:} Analyzed the problems in the data pipeline and \textbf{led the redesign of the data warehouse structure} to improve cost-efficiency and data reliability.}
+        \resumeItem{\textbf{Problem-Solving Process:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Trade-off Analysis (RDS vs. S3 Data Lake):} While the existing RDS structure was simple to develop initially, its long-term cost and scalability issues were clear. I made the decision to \textbf{introduce the low-cost S3 as a data lake}, despite the initial migration costs, to secure long-term storage cost savings and management flexibility.}
+                \resumeItem{\textbf{Specific Implementation (How):} Visually designed DataSource, Data Warehouse, and Data Mart layers using the \textbf{DBDiagram} tool. \textbf{Designed approximately 50 table schemas, including an SSoT table} to centrally manage duplicate data.}
+            \resumeItemListEnd
+        \resumeItem{\textbf{Result \& Impact:}}
+            \resumeItemListStart
+                \resumeItem{\textbf{Established Foundation for Cost Savings:} By introducing an S3 data lake, I established a foundation that could dramatically \textbf{reduce anticipated storage costs} compared to the previous architecture.}
+                \resumeItem{\textbf{Improved Data Reliability:} Established a structure that can systematically manage data duplication and improve consistency and reliability through the \textbf{SSoT table design}.}
+            \resumeItemListEnd
+            \hyperlink{data_warehouse_back}{\underline{go back}}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd

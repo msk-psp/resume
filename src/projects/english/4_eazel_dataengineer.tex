@@ -1,0 +1,86 @@
+\resumeSubHeadingListStart
+    \resumeSubheading
+    {Eazel Inc.}{Jun 2022 -- Sep 2024} % Changed company name format slightly
+    {Data Engineer, AI Labs}{Jung-gu, Seoul} % Translated location
+    
+    \resumeProjectHeading
+    {\textbf{Development and Operation of Data Pipeline for Price Database Service}}{Jan 2023 -- Oct 2023} % Translated
+    \resumeItemListStart
+        \resumeItem{Built data pipeline using a single AWS Aurora RDS to save development resources.} % Translated
+        \resumeItem{Processed and loaded data using PySpark Applications on AWS EMR.} % Translated
+        \resumeItem{Implemented partitioning and data optimization for distributed processing.} % Translated
+        \resumeItem{Key contribution to Series B funding by leading the overall design and construction of the data platform (Price Database/MLOps).} % Translated
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Development and Operation of Art Market Data Scraper}}{Jan 2023 – Feb 2023} % Translated
+    \resumeItemListStart
+        \resumeItem{Developed data scraper using requests and BeautifulSoup4.} % Translated
+        \resumeItem{Developed high-speed scraper utilizing MultiThreading and MultiProcessing.} % Translated
+        \resumeItem{Developed structured data scraping technique using Langchain's Information Extraction Prompt.} % Translated
+        \resumeItem{Developed a social relationship collection scraper written in Swift, operating in the iOS environment.} % Translated
+        \resumeItem{Managed multiple scraper instances (50 simultaneously) using boto3.} % Translated
+        \resumeItem{Managed scraper instances by connecting to the scraper management server using WebSockets.} % Translated
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Development and Operation of Central Management Server for Data Scrapers}}{Jan 2023 -- Feb 2023} % Translated
+    \resumeItemListStart
+        \resumeItem{Developed API endpoints using Flask for central management of scrapers.} % Translated
+        \resumeItem{Connected with scrapers via WebSocket to pass target information for scraping.} % Translated
+        \resumeItem{Transmitted Login Credentials using SHA-256 encryption.} % Translated
+        \resumeItem{Developed API Endpoints using Flask Blueprints.} % Translated
+        \resumeItem{Implemented reverse proxy using Nginx.} % Translated
+        \resumeItem{Managed HTTPS certificates using Route53 and Certbot.} % Translated (Corrected Route53)
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Development and Operation of BI Tool}}{Nov 2023 -- Nov 2023} % Translated
+    \resumeItemListStart
+        \resumeItem{Developed server for BI tool using Flask and NextJS.} % Translated
+        \resumeItem{Developed API to deliver social relationship data.} % Translated
+        \resumeItem{Developed BI Page using Cytoscape and SigmaJS to display social relationships in a directed graph format.} % Translated
+        \resumeItem{Developed API for data labeling.} % Translated
+        \resumeItem{Developed Components using NextJS and Carbon Design System.} % Translated
+        \resumeItem{Managed HTTPS certificates using Route53 and Certbot.} % Translated (Corrected Route53)
+        \resumeItem{Deployed to EC2 Instance (Ubuntu 22.04) using Docker Compose.} % Translated
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Deployment and Operation of Airflow Service}}{Jan 2023 -- Feb 2024} % Translated
+    \resumeItemListStart
+        \resumeItem{Created scraping scheduling DAGs using Airflow's PythonOperator to communicate with the central scraper management server.} % Translated
+        \resumeItem{Created data refinement and loading scheduling DAGs using AWS EMR service via boto3.} % Translated
+        \resumeItem{Operated DAGs using Sequential Executor.} % Translated
+        \resumeItem{Managed HTTPS certificates using Route53 and Certbot.} % Translated (Corrected Route53)
+        \resumeItem{Deployed to EC2 Instance (Ubuntu 22.04) using Docker Compose.} % Translated
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Development of Data Deduplication Feature}}{Nov 2023 -- Feb 2024} % Translated
+    \resumeItemListStart
+        \resumeItem{Collaborated with ML Research Engineer to develop a deduplication system by calculating distances between Embedding Vectors using Faiss-CPU with IVFFlat Index.} % Translated
+        \resumeItem{Extracted Image Embedding Vectors using Facebook's SSCD model.} % Translated
+        \resumeItem{Extracted Text Embedding Vectors using OpenAI's Text Embedding model Ada.} % Translated
+        \resumeItem{Reduced index creation overhead by 50\% using Postgres's PGVector 0.5.0 Extension.} % Translated
+        \resumeItem{Created PGVector's IVFFlat and HNSW Indexes.} % Translated
+        \resumeItem{Migrated data from existing Numpy.array to pgvector::vector.} % Translated
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Data Warehouse Schema Design for Efficient Data Management}}{Feb 2024 -- Sep 2024} % Translated
+    \resumeItemListStart
+        \resumeItem{Designed a data warehouse with a Single Source of Truth table using DBDiagram to efficiently manage duplicate data collected from various sources.} % Translated
+        \resumeItem{Designed a data warehouse schema using S3 as a data lake to reduce costs incurred from using existing RDS as both data source and data warehouse storage.} % Translated
+        \resumeItem{Designed DataSource, DataWarehouse, DataMart, and SSoT schemas, encompassing approximately 50 tables.} % Translated
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{AWS Service Management}}{} % Translated
+    \resumeItemListStart
+        \resumeItem{Implemented user-specific service access control based on IAM Roles.} % Translated
+        \resumeItem{Migrated EC2 x86 instance types to arm64 for cost savings.} % Translated
+        \resumeItem{Operated Aurora RDS PostgreSQL with separate Read and Write Instances.} % Translated
+        \resumeItem{Selected services by weighing resource costs between Managed services and EC2 services.} % Translated
+    \resumeItemListEnd
+\resumeSubHeadingListEnd

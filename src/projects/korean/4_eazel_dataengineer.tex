@@ -1,0 +1,143 @@
+\resumeSubHeadingListStart    
+    \resumeSubheading
+    {DataEngineer, AI Labs}{Jun 2022 -- Sep 2024}
+    {}{중구, 서울}
+    
+    \resumeProjectHeading
+    {
+        \hypertarget{price_database_back}
+            {
+                \textbf{Price Database 서비스를 위한 데이터 파이프라인 개발}
+            }
+    }
+    {Jan 2023 -- Oct 2023}
+    \resumeItemListStart
+        \resumeItem{개발 리소스 절약을 위해 단일 AWS Aurora RDS 사용하여 데이터 파이프라인 구축}
+        \resumeItem{AWS EMR의 PySpark Application 을 이용하여 데이터 가공 및 적재}
+        \resumeItem{분산 처리를 위한 파티셔닝 및 데이터 최적화}
+        \resumeItem{데이터 플랫폼(Price Database/MLOps) 총괄 설계 및 구축으로 Series B 투자 유치에 핵심 기여}
+        \resumeItem{\textbf{주도적으로 구축한 대용량 처리가 가능한 데이터 파이프라인 구축}}
+        \resumeItem{\hyperlink{price_database}{\underline{Project Detail >>}}}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {
+        \hypertarget{art_market_scraper_back}
+            {
+                \textbf{미술시장 데이터 스크래퍼 개발}
+            }
+    }
+    {Jan 2023 -- Feb 2023}
+    \resumeItemListStart
+        \resumeItem{requests, BeautifulSoup4 을 이용하여 데이터 스크래퍼 개발}
+        \resumeItem{MultiThreading 을 활용하여 고속으로 리소스를 업로드하는 스크래퍼 개발}
+        \resumeItem{Langchain 의 Information Extraction Prompt를 이용하여 정형 데이터 스크래핑 기술 개발}
+        \resumeItem{Swift로 작성하여 iOS 환경에서 동작하는 소셜 관계 수집 스크래퍼 개발}
+        \resumeItem{boto3 이용하여 다중 스크래퍼 인스턴스 관리하여 50개의 스크래퍼 인스턴스 동시 관리}
+        \resumeItem{WebSocket을 이용하여 스크래퍼 관리 서버와 연결하여 스크래퍼 인스턴스 관리}
+        \resumeItem{\textbf{동적(Selenium, PlayWright), 정적(Public/Private API) 데이터 스크래퍼 개발 및 운용}}
+        \resumeItem{\hyperlink{art_market_scraper}{\underline{Project Detail >>}}}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {
+        \hypertarget{scraper_server_back}
+            {
+                \textbf{데이터 스크래퍼 중앙 관리 서버 개발}
+            }
+    }
+    {Jan 2023 -- Feb 2023}
+    \resumeItemListStart
+        \resumeItem{Flask를 이용하여 스크래퍼들을 중앙 관리하기 위한 API endpoints 개발}
+        \resumeItem{WebSocket을 이용하여 스크래퍼와 연결하여 스크래퍼에게 타겟에 대한 정보를 넘겨줘 스크래핑}
+        \resumeItem{SHA-256 암호화를 이용하여 Login Credential 전달}
+        \resumeItem{Flask Blueprint를 이용하여 API Endpoints 개발}
+        \resumeItem{Nginx를 이용하여 reverse proxy 구현}
+        \resumeItem{Rout53과 Certbot을 이용하여 HTTPS 인증서 관리}
+        \resumeItem{\textbf{중앙 관리 용이한 데이터 스크래퍼 서버 개발 및 운용}}
+        \resumeItem{\hyperlink{scraper_server}{\underline{Project Detail >>}}}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {
+        \hypertarget{BI_tool_back}
+            {
+                \textbf{BI 툴 개발}
+            }
+    }
+    {Nov 2023 -- Nov 2023}
+    \resumeItemListStart
+        \resumeItem{Flask와 NextJS 이용하여 BI툴을 위한 서버 개발}
+        \resumeItem{소셜 관계 데이터를 전달해주는 API 개발}
+        \resumeItem{Directed Graph 형태를 갖는 소셜 관계를 보여주기 위한 BI Page를 Cytoscape와 SigmaJS를 이용하여 개발}
+        \resumeItem{데이터 라벨링을 위한 API 개발}
+        \resumeItem{NextJS와 Carbon Design System을 이용하여 Components 개발}
+        \resumeItem{Rout53과 Certbot을 이용하여 HTTPS 인증서 관리}
+        \resumeItem{Docker Compose를 이용하여 EC2 Instance(Ubuntu 22.04)에 배포}
+        \resumeItem{\textbf{FullStack BI(Nginx, Nextjs, Flask) 툴 개발 및 운용}}
+        \resumeItem{\hyperlink{BI_tool}{\underline{Project Detail >>}}}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {
+        \hypertarget{airflow_back}
+            {
+                \textbf{Airflow 서비스 배포 \& DAG 작성}
+            }
+    }
+    {Jan 2023 -- Feb 2024}
+    \resumeItemListStart
+        \resumeItem{Airflow의 PythonOperator 를 이용하여 스크래퍼 중앙 관리 서버와 통신하여 스크래핑 스케쥴링 DAG 작성}
+        \resumeItem{boto3를 이용하여 AWS EMR 서비스를 이용하여 데이터 정제 및 적재 시케쥴링 DAG 작성}
+        \resumeItem{Sequential Executor를 이용하여 DAG 운영}
+        \resumeItem{Rout53과 Certbot을 이용하여 HTTPS 인증서 관리}
+        \resumeItem{Docker Compose를 이용하여 EC2 Instance(Ubuntu 22.04) 에 서비스 배포}
+        \resumeItem{\textbf{Airflow DAG를 통한 주기적인 데이터 스크래핑 스케쥴링 및 PySpark를 이용하여 데이터 정제}}
+        \resumeItem{\hyperlink{airflow}{\underline{Project Detail >>}}}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {
+        \hypertarget{removing_duplicates_back}
+            {
+                \textbf{데이터 중복 제거 기능 개발}
+            }
+    }
+    {Nov 2023 -- Feb 2024}
+    \resumeItemListStart
+        \resumeItem{ML Research Engineer와 협업하여 Faiss-CPU를 이용하여 IVFFlat Index 생성하여 Embedding Vector의 거리를 계산하여 중복 제거 시스템 개발}
+        \resumeItem{Facebook의 SSCD 모델 사용하여 Image Embedding Vector 추출}
+        \resumeItem{OpenAI의 Text Embedding 모델 Ada을 사용하여 Text Embedding Vector 추출}
+        \resumeItem{Postgres의 PGVector 0.5.0 Extension을 이용하여 Index 생성 오버헤드를 50\% 줄임}
+        \resumeItem{PGVector의 IVFFlat, HNSW Index 생성}
+        \resumeItem{기존 Numpy.array를 pgvector::vector로 데이터 변경}
+        \resumeItem{\textbf{신뢰도 높은 데이터를 위한 Embedding 기반 데이터 정제}}
+        \resumeItem{\hyperlink{removing_duplicates}{\underline{Project Detail >>}}}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {
+        \hypertarget{data_warehouse_back}
+            {
+                \textbf{효율적인 데이터 관리를 위해 데이터 웨어하우스 스키마 설계}
+            }
+    }
+    {Feb 2024 -- Sep 2024}
+    \resumeItemListStart
+        \resumeItem{여러 데이터 소스에서 수집되어 발생되는 중복 데이터들을 효율적으로 관리하기 위해 Single Source of Truth 테이블을 포함한 데이터웨어하우스를 DBDiagram으로 설계}
+        \resumeItem{기존 RDS를 데이터소스 및 데이터 웨어하우스 저장소로 사용하여 발생된 비용을 줄이기 위해 S3를 데이터레이크로 사용하는 데이터웨어하우스 스키마로 설계}
+        \resumeItem{DataSource, DataWarehouse, DataMart와 SSoT 스키마 설계, 약 50개 분량의 테이블을 설계}
+        \resumeItem{\textbf{비용 절감 및 신뢰도 높은 데이터 관리를 위한 데이터 파이프라인 구조 재설계 주도}}
+        \resumeItem{\hyperlink{data_warehouse}{\underline{Project Detail >>}}}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{AWS Service 관리}}{}
+    \resumeItemListStart
+        \resumeItem{IAM Role 기반 유저 별 서비스 접근 제어}
+        \resumeItem{비용 절약을 위해 EC2 x86 인스턴스 타입을 arm64로 마이그레이션 }
+        \resumeItem{Read, Write Instance 분리하여 Aurora RDS Postgresql 운영}
+        \resumeItem{Managed 서비스와 EC2 서비스 사용에 대한 리소스 비용을 저울질 하여 서비스 취사 선택}
+        \resumeItem{\textbf{리소스 별 적절한 권한 부여}}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
