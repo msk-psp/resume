@@ -1,0 +1,50 @@
+%----------SUMMARY----------%
+\section{Summary}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    I design, build and operate an MLOps platform on on-prem Kubernetes, alone. Over six months at HUINNO I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — in \textbf{Pulumi (Python IaC)}, as the \textbf{sole owner of cluster construction} on a two-person platform team. I prefer removing the human bottleneck to adding tools, and I make decisions by measurement. Before this, I started as an iOS developer, moved through backend, frontend and cloud data pipelines, and led a data engineering team.
+    }}
+\end{itemize}
+
+%----------KEY RESULTS----------%
+\section{Key Results (measured 2026-09)}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+    \item{\textbf{Authored the majority of all 12 Pulumi infrastructure stacks} — 93\% of stack-code changes (6 stacks above 96\%). 92\% of the repository's 1,204 commits and 678 merged PRs.}
+    \item{\textbf{10 nodes / 235 running pods / 23 internal services} in production. SSO across all 23 with Dex (GitHub OIDC) + oauth2-proxy, the same identity carried into Kubernetes RBAC.}
+    \item{\textbf{83\% of the ETL repository's 1,599 commits} — 93\% of the shared framework and 100\% each of the CAST, MIMIC-IV and operational pipelines. Removed the single-person dependency in dataset preparation with Airflow 3.x + dbt + Apache Iceberg, lineage auto-recorded in DataHub.}
+    \item{\textbf{Training-data delivery 25$\times$ faster} — network and storage redesign took iperf3-measured throughput from 93.7\,Mbps to 2.5\,Gbps; an 8\,TB transfer from 8.4 days to 7.8 hours.}
+    \item{\textbf{Reversed a GPU purchase decision with measurement} — 10 days of telemetry showed 5.3\% utilization and zero queued jobs; the bottleneck was 1,112 GPU-hours held idle by dormant sessions (91\% of held time). Redirected from purchase to reclamation.}
+    \item{\textbf{AI coding agents run continuously to lift one person's throughput to team scale} — backed by 719 SDK unit tests, CI gates, 23 incident write-ups and 30 PRDs.}
+    \item{\textbf{Earlier:} StarRocks cut analytical query time from 7\,s to 1.4\,s (80\%, Cellkey). Led the AWS EMR / PySpark art-market ETL pipeline as team lead (Eazel).}
+    }
+\end{itemize}
+
+%----------CURRENT WORK----------%
+\section{What I Do Now}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    Data Engineer, HUINNO (Dec 2025 --). I operate every layer of the MLOps platform on bare-metal Kubernetes — networking, storage, catalog, lineage, orchestration, distributed training and identity — and I am attaching a reproducibility contract (version, content hash, code commit, environment lock and seed stamped onto a dataset at execution time) plus MLflow tracking and model registry so that research code can move onto KubeRay distributed training. The design started from a quantified survey of the existing research workflow, which identified the root cause as results having no coordinates. I am establishing the split where researchers own domain ETL and the platform owns execution, lineage, verification and retries.
+    }}
+\end{itemize}
+
+%----------STACK----------%
+\section{Stack}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    \textbf{Platform}: Kubernetes (kubeadm) · Pulumi · Cilium · SeaweedFS · Dex/OIDC · Prometheus/Grafana \quad
+    \textbf{Data}: Airflow 3.x · dbt · Apache Iceberg · DataHub · PostgreSQL (pg\_duckdb) · ClickHouse · StarRocks \quad
+    \textbf{ML}: Ray/KubeRay · MLflow · PyTorch · DVC \quad
+    \textbf{Languages \& other}: Python · SQL · Swift · Shell · AWS/GCP · LangChain
+    }}
+\end{itemize}
+
+%----------DETAIL----------%
+\section{Details}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    Full experience and project details are in a separate document (\texttt{resume\_english.pdf}). \quad
+    \href{https://github.com/msk-psp}{github.com/msk-psp} \quad
+    \href{https://www.linkedin.com/in/minsoo-kim-167405131}{linkedin.com/in/minsoo-kim-167405131}
+    }}
+\end{itemize}

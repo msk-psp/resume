@@ -2,33 +2,28 @@
 
 \begin{itemize}[leftmargin=0.15in, label={}]
     \item{
-    \textbf{Cloud-Based Large-Scale Data Pipeline Design, Build \& Optimization:}
+    \textbf{Designing, building and operating an MLOps platform on on-prem Kubernetes:}
     \\
-    Extensive experience in building large-scale data platforms and optimizing for cost and performance, utilizing PySpark, Airflow, and AWS (EMR, S3, RDS, etc.).
+    I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — on bare-metal Kubernetes in \textbf{Pulumi (Python IaC)}, and I build and operate it alone. Across networking (Cilium), storage (SeaweedFS) and identity (Dex OIDC $\rightarrow$ Kubernetes RBAC) I \textbf{authored the majority of all 12 stacks} (93\% of stack-code changes) and run \textbf{10 nodes / 235 running pods / 23 internal services} in production.
     }
     \item{
-    \textbf{Full-Stack Solution Development \& Deployment:}
+    \textbf{Data pipelines and the lakehouse:}
     \\
-    Experience in developing and deploying end-to-end solutions, including data visualization dashboards and data labeling systems, using FastAPI/Flask and Next.JS.
+    Designed and implemented a medallion pipeline on \textbf{Airflow 3.x + dbt (Cosmos) + Apache Iceberg} with lineage auto-recorded in \textbf{DataHub}; authored 83\% of the ETL repository and 93\% of its shared framework. Previously ran large-scale cloud pipelines on AWS EMR / PySpark and cut analytical query time from \textbf{7\,s to 1.4\,s (80\%)} by introducing StarRocks.
     }
     \item{
-    \textbf{LLM-driven Development and Context Engineering:} 
+    \textbf{Architecture and trade-off decisions made by measurement:}
     \\
-    Experienced in developing applications and data-pipelines using \textit{Gemini CLI} and \textit{Cursor AI} as an AI pair programming assistant. Applied the \textbf{BMAD method} for effective context engineering to build maintainable and intelligent AI-driven systems.
+    I measure before choosing tools. Turned a GPU purchase request into reclamation with 10 days of telemetry (\textbf{5.3\% utilization, zero queued jobs, 1,112 GPU-hours held idle}), cut training-data delivery \textbf{25$\times$} by redesigning network and storage, and designed a reproducibility contract from a quantified survey of the research workflow. Weighing cost, performance and operational complexity is the same habit that drove earlier decisions such as adopting PGVector.
     }
     \item{
-    \textbf{Increasing Data Value with AI/LLM Technology:}
+    \textbf{AI agents run continuously, backed by verification gates:}
     \\
-    Experience in developing data purification systems, deduplication systems, and chatbot prototypes utilizing LLMs (LangChain) and embedding models (OpenAI, SSCD).
+    I run AI coding agents continuously to lift \textbf{one person's throughput to team scale} (678 merged PRs in 6 months), and keep that speed honest with \textbf{719 SDK unit tests}, CI gates and pre-commit hooks that block tag/version drift and private-key commits, and \textbf{23 incident write-ups and 30 PRDs}. Earlier, built deduplication systems and chatbot prototypes with LangChain and embedding models.
     }
     \item{
-    \textbf{Data-Driven Architecture Design \& Trade-off Analysis:}
+    \textbf{Full-stack breadth and team leadership:}
     \\
-    Experienced in designing data warehouses (SSoT) based on PostgreSQL and S3 data lakes. Particularly skilled at selecting optimal architectures, such as adopting PGVector, by \textbf{analyzing trade-offs between cost, performance, and operational complexity} to fit business needs.
-    }
-    \item{
-    \textbf{Technical Leadership \& Broad Communication:}
-    \\
-    Led a data engineering team based on experience across a diverse tech stack (Frontend, Backend, Mobile, DB), and spearheaded successful collaboration with developers and business departments.
+    A path from iOS through backend (FastAPI / Flask / Spring Boot), frontend (Next.js) and cloud (AWS / GCP) let me lead a data engineering team; today I design and enforce the split where \textbf{researchers own domain ETL and the platform owns execution, lineage and verification}.
     }
 \end{itemize}

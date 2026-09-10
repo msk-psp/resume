@@ -2,34 +2,28 @@
 
 \begin{itemize}[leftmargin=0.15in, label={}]
     \item{
-    \textbf{클라우드 기반 대규모 데이터 파이프라인 설계, 구축 및 최적화:}
+    \textbf{온프레미스 Kubernetes 위 MLOps 플랫폼 설계·구축·운영:}
     \\
-    PySpark, Airflow, AWS(EMR, S3, RDS 등)를 활용하여 대규모 데이터 플랫폼을 구축하고, 비용 및 성능을 최적화한 경험이 다수 있습니다. 
+    베어메탈 Kubernetes 위에 수집 → 레이크하우스 → 변환 → 계보 → 분산 학습 → 실험·모델 레지스트리까지 전 구간을 \textbf{Pulumi(Python IaC)}로 코드화해 혼자 구축하고 운영합니다. 네트워크(Cilium)·스토리지(SeaweedFS)·신원(Dex OIDC → Kubernetes RBAC)까지 \textbf{12개 스택 전부에서 과반을 직접 작성}(스택 코드 변경의 93\%)했고, \textbf{10노드 · 상시 pod 235개 · 사내 서비스 23종}을 프로덕션으로 돌리고 있습니다.
     }
     \item{
-    \textbf{Full-Stack 솔루션 개발 및 배포:} 
+    \textbf{데이터 파이프라인과 레이크하우스:}
     \\
-    FastAPI/Flask, Next.JS 기반으로 데이터 시각화 대시보드 및 데이터 라벨링 시스템 등 End-to-End 솔루션을 직접 개발하고 배포한 경험이 있습니다. 
+    \textbf{Airflow 3.x + dbt(Cosmos) + Apache Iceberg} 메달리온 파이프라인을 설계·구현하고 \textbf{DataHub}에 계보를 자동 기록합니다. ETL 저장소 커밋의 83\%, 공용 프레임워크의 93\%를 작성했습니다. 이전에는 AWS EMR/PySpark 위에 대규모 클라우드 파이프라인을 운영했고, StarRocks 도입으로 분석 쿼리를 \textbf{7초 → 1.4초(80\% 단축)}로 줄였습니다.
     }
     \item{
-    \textbf{LLM 기반 개발 및 컨텍스트 엔지니어링:} 
+    \textbf{측정으로 결정하는 아키텍처·트레이드오프 분석:}
     \\
-    Cursor AI, Gemini CLI 등을 활용하여 어플리케이션 및 파이프라인을 설계하였으며, \textbf{BMAD-Method을 사용한 컨텍스트 엔지니어링 수행. AI 모델을 코드 개발 프로세스에 통합하여 지능적이고 유지보수 가능한 시스템을 구현.
-    }
-    }
-    \item{
-    \textbf{AI/LLM 기술을 활용한 데이터 가치 증대:} 
-    \\
-    LLM(LangChain) 및 임베딩 모델(OpenAI, SSCD)을 활용하여 데이터 정제, 중복 제거 시스템 및 챗봇 프로토타입을 개발한 경험이 있습니다. 
+    도구를 고르기 전에 잽니다. GPU 증설 요청을 10일 실측(\textbf{가동률 5.3\% · 대기 0건 · 유휴 점유 1,112 GPU-시간})으로 「구매 대신 회수」로 돌렸고, 네트워크·스토리지 재설계로 학습 데이터 전달을 \textbf{25배} 단축했으며, 연구 워크플로를 정량 조사해 재현성 계약을 설계했습니다. 비용·성능·운영 복잡도의 트레이드오프를 재서 고르는 방식은 PGVector 도입 등 이전 경력부터 같습니다.
     }
     \item{
-    \textbf{데이터 기반 아키텍처 설계 및 트레이드오프 분석:} 
+    \textbf{AI 에이전트 상시 투입, 검증 장치로 받침:}
     \\
-    PostgreSQL 및 S3 데이터 레이크 기반의 데이터웨어하우스(SSoT)를 설계한 경험이 있습니다. 특히, \textbf{비용, 성능, 운영 복잡도 간의 트레이드오프를 분석}하여 PGVector 도입 등 비즈니스 상황에 맞는 최적의 아키텍처를 선택하는 데 능숙합니다. 
+    AI 코딩 에이전트를 상시 투입해 \textbf{1인 처리량을 팀 규모로} 끌어올립니다(6개월 머지 PR 678건). 그 속도는 \textbf{SDK 단위 테스트 719건}, 태그/버전 불일치와 개인키 커밋을 막는 CI 게이트·pre-commit 훅, \textbf{실패 기록 23건 · PRD 30건}이 받칩니다. 이전에는 LangChain·임베딩 모델로 데이터 중복 제거 시스템과 챗봇 프로토타입을 개발했습니다.
     }
     \item{
-    \textbf{기술 리더십 및 폭넓은 커뮤니케이션:} 
+    \textbf{풀스택 폭과 팀 리드:}
     \\
-    다양한 기술 스택(Frontend, Backend, Mobile, DB) 경험을 기반으로 데이터 엔지니어링 팀을 리딩하고, 개발자 및 현업 부서와의 성공적인 협업을 주도했습니다. 
+    iOS → 백엔드(FastAPI/Flask/Spring Boot) → 프론트(Next.js) → 클라우드(AWS/GCP)를 거친 폭으로 데이터 엔지니어링 팀을 리드했고, 지금은 「도메인 ETL은 연구자가, 실행·계보·검증은 플랫폼이」 맡는 분담 구조를 설계해 정착시켰습니다.
     }
 \end{itemize}
