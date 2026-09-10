@@ -11,7 +11,7 @@
         \resumeItem{\textbf{Problem-Solving Process:}}
             \resumeItemListStart
                 \resumeItem{\textbf{Trade-off (Managed vs. Self-hosted):} Managed K8s / managed lakehouse offers a fast start, but given internal resource and security requirements plus long-term cost, \textbf{bare-metal self-hosted} was the superior choice. Accepted higher up-front investment to keep every layer in-cluster.}
-                \resumeItem{\textbf{Implementation (How):} Modularized infrastructure into \textbf{9 Pulumi stacks} (platform → base → storage → catalog → lineage → orchestration → staging → compute → mlops → cicd) with explicit cross-stack references for reproducible single-command deploys. Built networking on \textbf{Cilium CNI} (KPR + Gateway API + LB-IPAM + L2 Announcements); exposed \texttt{*.<internal>.*} hostnames via a single Gateway with in-cluster CA HTTPS.}
+                \resumeItem{\textbf{Implementation (How):} Modularized infrastructure into \textbf{12 Pulumi stacks} (platform → base → storage → catalog → lineage → orchestration → staging → compute → mlops → cicd → identity → devenv) with explicit cross-stack references for reproducible single-command deploys. Built networking on \textbf{Cilium CNI} (KPR + Gateway API + LB-IPAM + L2 Announcements); exposed \texttt{*.<internal>.*} hostnames via a single Gateway with in-cluster CA HTTPS.}
             \resumeItemListEnd
         \resumeItem{\textbf{Results \& Impact:}}
             \resumeItemListStart

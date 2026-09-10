@@ -11,7 +11,7 @@
         \resumeItem{\textbf{문제 해결 과정:}}
             \resumeItemListStart
                 \resumeItem{\textbf{트레이드오프 분석 (Managed vs. Self-hosted):} 매니지드 K8s / 매니지드 lakehouse 는 빠른 출발이 가능하지만, 사내 자원·보안 요구사항 및 장기 운영 비용을 감안하면 \textbf{베어메탈 self-hosted 가 우월}하다고 판단. 초기 구축 부담을 감수하고 모든 layer 를 in-cluster 로 가져감.}
-                \resumeItem{\textbf{구체적인 구현 내용 (How):} \textbf{Pulumi(Python)} 로 인프라 코드를 \textbf{9개 stack}(platform → base → storage → catalog → lineage → orchestration → staging → compute → mlops → cicd)으로 모듈화. 단일 명령으로 reproducible deploy 가 가능하도록 stack 간 reference 와 dependency 를 명시적으로 관리. \textbf{Cilium CNI}(KPR + Gateway API + LB-IPAM + L2 Announcements) 기반 네트워크 구성, 단일 Gateway 로 \texttt{*.<internal>.*} 호스트명을 자체 CA HTTPS 로 일괄 노출.}
+                \resumeItem{\textbf{구체적인 구현 내용 (How):} \textbf{Pulumi(Python)} 로 인프라 코드를 \textbf{12개 stack}(platform → base → storage → catalog → lineage → orchestration → staging → compute → mlops → cicd → identity → devenv)으로 모듈화. 단일 명령으로 reproducible deploy 가 가능하도록 stack 간 reference 와 dependency 를 명시적으로 관리. \textbf{Cilium CNI}(KPR + Gateway API + LB-IPAM + L2 Announcements) 기반 네트워크 구성, 단일 Gateway 로 \texttt{*.<internal>.*} 호스트명을 자체 CA HTTPS 로 일괄 노출.}
             \resumeItemListEnd
         \resumeItem{\textbf{결과 및 임팩트:}}
             \resumeItemListStart
