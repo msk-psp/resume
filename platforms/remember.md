@@ -32,10 +32,10 @@
 ```
 사내 MLOps 파이프라인 전체를 처음부터 설계·구축·운영. 수집 → 레이크하우스 → 변환 → 계보 → 분산 학습 → 실험·모델 레지스트리.
 
-· 플랫폼 2인 팀에서 클러스터 구성 단독 수행 — 12개 Pulumi 스택 전부 과반 이상 직접 작성(변경의 93%), 10노드·상시 pod 235개·사내 서비스 23종 운영
+· 플랫폼 2인 팀에서 클러스터 구성 단독 수행. 12개 Pulumi 스택 전부를 직접 만짐(스택 코드 변경의 93%, ETL 저장소 커밋의 83%), 10노드·상시 pod 235개·사내 서비스 23종 운영
 · 데이터셋 준비의 1인 의존 제거 — 담당자 부재 시 멈추던 수작업을 Airflow·dbt·Iceberg 스케줄 실행으로 전환, DataHub 계보 자동 기록
 · 학습 데이터 전달 25배 단축 — 93.7Mbps → 2.5Gbps, 8TB 기준 8.4일 → 7.8시간
-· GPU 증설 결정을 실측으로 전환 — 10일 측정 결과 가동률 5.3%·대기 0건, 병목은 유휴 세션이 점유한 1,112 GPU-시간(91%)임을 규명해 구매 대신 회수 선택
+· GPU 증설 결정을 실측으로 전환. 10일 측정 결과 가동률 5.3%·대기 0건, 병목은 유휴 세션이 점유한 1,112 GPU-시간(91%)임을 규명해 구매 대신 회수 선택
 · AI 코딩 에이전트로 1인 처리량을 팀 규모로 끌어올리되 검증으로 받침 — 6개월간 머지 PR 678건, 동시에 테스트 719건·CI 게이트·실패 기록 23건 축적
 
 Kubernetes · Pulumi · Airflow · dbt · Iceberg · Ray · MLflow · DataHub · PostgreSQL · ClickHouse
@@ -49,7 +49,7 @@ Kubernetes · Pulumi · Airflow · dbt · Iceberg · Ray · MLflow · DataHub ·
 
 ```
 Cellkey / Manager, Data Engineer (2025.07~2025.12)
-· Airflow 3.x로 데이터 정제 파이프라인을 설계하고, AWS Lambda·Batch·Step Functions를 최적화해 데이터 워크플로를 확장
+· Airflow 3.x로 데이터 정제 파이프라인을 설계하고 AWS Lambda·Batch·Step Functions를 최적화해 데이터 워크플로를 확장
 
 Eazel / Team Lead, AI Labs (2022.06~2024.09)
 · 미술 시장 ETL 파이프라인 총괄 — 아키텍처 설계부터 배포·모니터링·성능 최적화까지 팀 리드
