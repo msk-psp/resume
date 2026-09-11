@@ -4,7 +4,7 @@
     \item{
     \textbf{Designing, building and operating an MLOps platform on on-prem Kubernetes:}
     \\
-    I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — on bare-metal Kubernetes in \textbf{Pulumi (Python IaC)}, and I build and operate it alone. Across networking (Cilium), storage (SeaweedFS) and identity (Dex OIDC $\rightarrow$ Kubernetes RBAC) I \textbf{authored the majority of all 12 stacks} (93\% of stack-code changes) and run \textbf{10 nodes / 235 running pods / 23 internal services} in production. The segment closing the lifecycle — distributed training, experiment tracking and the model registry — has been underway \textbf{since Aug 2026}.
+    I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — on bare-metal Kubernetes in \textbf{Pulumi (Python IaC)}, and I build and operate it alone. Across networking (Cilium), storage (SeaweedFS) and identity (Dex OIDC $\rightarrow$ Kubernetes RBAC) I \textbf{authored the majority of all 12 stacks} (93\% of stack-code changes) and run \textbf{10 nodes / 235 running pods / 23 internal services} in production. The segment closing the lifecycle — distributed training, experiment tracking and the model registry — has been underway \textbf{since Aug 2026}. On-prem bottlenecks often sit outside the code, so I work \textbf{down to the hardware} — replacing faulty cabling and switches, fitting reclaimed RAM and NVMe into nodes.
     }
     \item{
     \textbf{Data pipelines and the lakehouse:}
