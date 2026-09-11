@@ -10,7 +10,7 @@
 \section{Key Results (measured 2026-09)}
 \begin{itemize}[leftmargin=0.15in, label={}]
     \small{
-    \item{\textbf{Built the entire MLOps pipeline} — ingestion through the model registry, with no gap left manual, codified into 12 Pulumi stacks: infrastructure changes land as PRs and a new environment is rebuilt by composing stacks. (1,204 commits, 678 merged PRs.)}
+    \item{\textbf{Led the design and implementation of the entire MLOps pipeline} — ingestion through the model registry, with no gap left manual, codified into 12 Pulumi stacks: infrastructure changes land as PRs and a new environment is rebuilt by composing stacks. (1,204 commits, 678 merged PRs.)}
     \item{\textbf{10 nodes / 235 running pods / 23 internal services} in production. SSO across all 23 with Dex (GitHub OIDC) + oauth2-proxy, the same identity carried into Kubernetes RBAC.}
     \item{\textbf{Removed the single-person dependency in dataset preparation} — "ask one data scientist and wait" became scheduled Airflow 3.x + dbt + Apache Iceberg runs with lineage in DataHub; researchers now query directly. (1,599 commits in the ETL repo; I wrote the shared framework myself, along with a product pipeline, the MIMIC-IV pipeline and the operational ones.)}
     \item{\textbf{A team's worth of platform in six months} — most of this Kubernetes MLOps platform was written with AI coding agents alongside me, and it is still running in production. Not speed alone: 719 SDK unit tests, CI gates, 23 incident write-ups and 30 PRDs went in with it.}
