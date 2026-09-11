@@ -2,7 +2,7 @@
 \section{Summary}
 \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-    I design, build and operate an MLOps platform on on-prem Kubernetes. Over six months at HUINNO I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — in \textbf{Pulumi}, as the \textbf{sole owner of cluster construction} on a two-person platform team (93\% of stack-code changes and 83\% of the ETL repository's commits are mine). I remove human bottlenecks rather than add tools, and I work with AI agents by default to widen what a single engineer can carry. Earlier: iOS $\rightarrow$ backend $\rightarrow$ frontend $\rightarrow$ cloud data pipelines, then led a data engineering team.
+    I design, build and operate an MLOps platform on on-prem Kubernetes. Over six months at HUINNO I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — in \textbf{Pulumi}, as the \textbf{sole owner of cluster construction} on a two-person platform team (93\% of stack-code changes and 83\% of the ETL repository's commits are mine). I remove human bottlenecks rather than add tools, and I put AI coding agents alongside me to raise what one engineer ships to team scale. Earlier: iOS $\rightarrow$ backend $\rightarrow$ frontend $\rightarrow$ cloud data pipelines, then led a data engineering team.
     }}
 \end{itemize}
 
@@ -13,7 +13,7 @@
     \item{\textbf{Built the entire MLOps pipeline} — ingestion through the model registry, with no gap left manual, codified into 12 Pulumi stacks: infrastructure changes land as PRs and a new environment is rebuilt by composing stacks. (1,204 commits, 678 merged PRs.)}
     \item{\textbf{10 nodes / 235 running pods / 23 internal services} in production. SSO across all 23 with Dex (GitHub OIDC) + oauth2-proxy, the same identity carried into Kubernetes RBAC.}
     \item{\textbf{Removed the single-person dependency in dataset preparation} — "ask one data scientist and wait" became scheduled Airflow 3.x + dbt + Apache Iceberg runs with lineage in DataHub; researchers now query directly. (1,599 commits in the ETL repo; I wrote the shared framework myself, along with a product pipeline, the MIMIC-IV pipeline and the operational ones.)}
-    \item{\textbf{A developer who works with AI agents by default} — most of this Kubernetes platform was written with coding agents running alongside me, and it has been in production for six months. The speed that buys is held honest by 719 SDK unit tests, CI gates, 23 incident write-ups and 30 PRDs.}
+    \item{\textbf{A team's worth of platform in six months} — most of this Kubernetes MLOps platform was written with AI coding agents alongside me, and it is still running in production. Not speed alone: 719 SDK unit tests, CI gates, 23 incident write-ups and 30 PRDs went in with it.}
     \item{\textbf{Earlier:} Led the AWS EMR / PySpark art-market ETL pipeline (Eazel, team lead).}
     }
 \end{itemize}
