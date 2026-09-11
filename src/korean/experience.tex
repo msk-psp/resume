@@ -7,7 +7,7 @@
     {HUINNO}{Dec 2025 -- Present}
     {Data Engineer}{서울}
     \resumeItemListStart
-        \resumeItem{\textbf{사내 MLOps 파이프라인 전체를 처음부터 설계·구축·운영}(수집 → 레이크하우스 → 변환 → 계보 → 분산 학습 → 실험·모델 레지스트리). \textbf{플랫폼 2인 팀에서 클러스터 구성 전 구간을 단독 수행} — 네트워크·스토리지·카탈로그·계보·오케스트레이션·분산 학습·신원까지 12개 Pulumi 스택 전부를 직접 만짐. 6개월간 \textbf{10노드 · 상시 pod 235개 · 사내 서비스 23종}을 프로덕션 운영하며 머지 PR 678건 · 커밋 1,204건을 냈고, 베어메탈 \textbf{Kubernetes}를 \textbf{Pulumi(Python IaC)}로 전면 코드화해 전 구간을 재현 가능한 배포로 전환.}
+        \resumeItem{\textbf{사내 MLOps 파이프라인 전체를 처음부터 설계·구축·운영}(수집 → 레이크하우스 → 변환 → 계보 → 분산 학습 → 실험·모델 레지스트리). \textbf{플랫폼 2인 팀에서 클러스터 구성 전 구간을 단독 수행} — 네트워크·스토리지·카탈로그·계보·오케스트레이션·분산 학습·신원까지 12개 Pulumi 스택 전부를 직접 만짐. 6개월간 \textbf{10노드 · 상시 pod 235개 · 사내 서비스 23종}을 프로덕션 운영하며 머지 PR 678건 · 커밋 1,204건을 냈고, 베어메탈 \textbf{Kubernetes}를 \textbf{Pulumi}로 전면 코드화해 전 구간을 재현 가능한 배포로 전환.}
         \resumeItem{\textbf{ETL 파이프라인 전 갈래를 직접 설계·구현}(2026.03--07, 5개월 · 별도 저장소, 커밋 1,599건). 제품 공용 프레임워크와 CAST · MIMIC-IV · 운영 유지보수 파이프라인을 직접 작성했고, 나머지 제품도 이 프레임워크 위에서 확장되도록 설계 — \textbf{도메인 ETL은 연구자가 얹고 실행·계보·검증·재시도는 플랫폼이 책임지는} 분담 구조를 정착.}
         \resumeItem{\textbf{[데이터 · 2026.03--07] 데이터셋 준비의 1인 의존을 제거.} 기존에는 연구자가 데이터 과학자 한 명에게 요청 → 하드코딩된 스크립트를 SSH로 \textbf{수 시간} 실행 → 파일로 전달하는 구조라 담당자 부재 시 작업이 멈췄고 재현·계보·버전이 모두 없었다. \textbf{Airflow 3.x + dbt(Cosmos) + Apache Iceberg}로 Bronze/Silver/Gold 변환을 \textbf{스케줄 자동 실행}으로 바꾸고 \textbf{DataHub}에 테이블 단위 계보를 자동 기록해, 요청·대기 없이 연구자가 직접 조회하는 흐름으로 전환.}
         \resumeItem{\textbf{[학습 · 2026.08--현재] 단일 GPU 수동 실행을 대체할 분산 학습 기반을 구축.} \textbf{KubeRay}로 사양이 제각각인 \textbf{GPU 10장}을 단일 풀로 묶고, CUDA·PyTorch·ONNXRuntime 버전을 고정한 \textbf{단일 워커 이미지}와 사내 SDK 제출 API로 학습 환경을 일원화(자동 checkpoint·중단 지점 재개 지원). \textbf{도입 단계이며 연구 코드 이관이 남은 과제} — 이관을 막는 원인을 실측으로 규명한 것이 아래 두 항목.}
