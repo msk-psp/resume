@@ -12,9 +12,9 @@
     \small{
     \item{\textbf{Authored the majority of all 12 Pulumi infrastructure stacks} — 93\% of stack-code changes (6 stacks above 96\%). 92\% of the repository's 1,204 commits and 678 merged PRs.}
     \item{\textbf{10 nodes / 235 running pods / 23 internal services} in production. SSO across all 23 with Dex (GitHub OIDC) + oauth2-proxy, the same identity carried into Kubernetes RBAC.}
-    \item{\textbf{83\% of the ETL repository's 1,599 commits} — 93\% of the shared framework and 100\% each of the CAST, MIMIC-IV and operational pipelines. Removed the single-person dependency in dataset preparation with Airflow 3.x + dbt + Apache Iceberg, lineage auto-recorded in DataHub.}
-    \item{\textbf{Training-data delivery 25$\times$ faster} — network and storage redesign took iperf3-measured throughput from 93.7\,Mbps to 2.5\,Gbps; an 8\,TB transfer from 8.4 days to 7.8 hours.}
-    \item{\textbf{Reversed a GPU purchase decision with measurement} — 10 days of telemetry showed 5.3\% utilization and zero queued jobs; the bottleneck was 1,112 GPU-hours held idle by dormant sessions (91\% of held time). Redirected from purchase to reclamation.}
+    \item{\textbf{83\% of the ETL repository's 1,599 commits} — 93\% of the shared framework and 100\% each of the CAST, MIMIC-IV and operational pipelines. Removed the single-person dependency in dataset prep with Airflow 3.x + dbt + Apache Iceberg, lineage auto-recorded in DataHub.}
+    \item{\textbf{Training-data delivery 25$\times$ faster} — network and storage redesign took iperf3 throughput from 93.7\,Mbps to 2.5\,Gbps; an 8\,TB transfer from 8.4 days to 7.8 hours.}
+    \item{\textbf{Reversed a GPU purchase decision with measurement} — 10 days of telemetry showed 5.3\% utilization and zero queued jobs; the bottleneck was 1,112 GPU-hours held idle by dormant sessions (91\% of held time), so I redirected from purchase to reclamation.}
     \item{\textbf{AI coding agents run continuously to lift one person's throughput to team scale} — backed by 719 SDK unit tests, CI gates, 23 incident write-ups and 30 PRDs.}
     \item{\textbf{Earlier:} A StarRocks \textbf{PoC} measured analytical query time down from 7\,s to 1.4\,s (80\%, Cellkey). Led the AWS EMR / PySpark art-market ETL pipeline as team lead (Eazel).}
     }
@@ -40,17 +40,15 @@
 \end{itemize}
 
 %----------CERTIFICATIONS----------%
-\section{Certifications}
+\section{Certifications \& Languages}
 \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-    \textbf{Engineer Information Processing} \mbox{(Nov 2017)} \quad · \quad \textbf{Craftsman Information Processing} \mbox{(Jul 2009)} \quad · \quad HRD Korea
+    \textbf{Certifications}: Engineer Information Processing \mbox{(Nov 2017)} · Craftsman Information Processing \mbox{(Jul 2009)} · HRD Korea \\[2pt]
+    \textbf{Languages}: Korean (native) · English \mbox{AL (OPIc)} · Japanese (conversational)
     }}
 \end{itemize}
 
 %----------DETAIL----------%
-\section{Details}
-\begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-    Full experience and project details are in a separate document (\texttt{resume\_english.pdf}).
-    }}
-\end{itemize}
+% One sentence does not warrant a section heading; keep it as a footer line
+\vspace{6pt}
+{\small Full experience and project details are in a separate document (\texttt{resume\_english.pdf}).}
