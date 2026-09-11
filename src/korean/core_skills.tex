@@ -4,12 +4,12 @@
     \item{
     \textbf{온프레미스 Kubernetes 위 MLOps 플랫폼 설계·구축·운영:}
     \\
-    베어메탈 Kubernetes 위에 수집 → 레이크하우스 → 변환 → 계보 → 분산 학습 → 실험·모델 레지스트리까지 전 구간을 \textbf{Pulumi(Python IaC)}로 코드화해 혼자 구축하고 운영합니다. 네트워크(Cilium)·스토리지(SeaweedFS)·신원(Dex OIDC → Kubernetes RBAC)까지 \textbf{12개 스택 전부에서 과반을 직접 작성}(스택 코드 변경의 93\%)했고, \textbf{10노드 · 상시 pod 235개 · 사내 서비스 23종}을 프로덕션으로 돌리고 있습니다.
+    베어메탈 Kubernetes 위에 수집 → 레이크하우스 → 변환 → 계보 → 분산 학습 → 실험·모델 레지스트리까지 전 구간을 \textbf{Pulumi(Python IaC)}로 코드화해 혼자 구축하고 운영합니다. 네트워크(Cilium)·스토리지(SeaweedFS)·신원(Dex OIDC → Kubernetes RBAC)까지 \textbf{12개 스택 전부에서 과반을 직접 작성}(스택 코드 변경의 93\%)했고, \textbf{10노드 · 상시 pod 235개 · 사내 서비스 23종}을 프로덕션으로 돌리고 있습니다. 분산 학습 · 실험 · 모델 레지스트리로 생애주기를 잇는 구간은 \textbf{2026.08부터} 진행 중입니다.
     }
     \item{
     \textbf{데이터 파이프라인과 레이크하우스:}
     \\
-    \textbf{Airflow 3.x + dbt(Cosmos) + Apache Iceberg} 메달리온 파이프라인을 설계·구현하고 \textbf{DataHub}에 계보를 자동 기록합니다. ETL 저장소 커밋의 83\%, 공용 프레임워크의 93\%를 작성했습니다. 이전에는 AWS EMR/PySpark 위에 대규모 클라우드 파이프라인을 운영했습니다.
+    \textbf{Airflow 3.x + dbt(Cosmos) + Apache Iceberg} 메달리온 파이프라인을 \textbf{2026.03--07(5개월)}에 설계·구현하고 \textbf{DataHub}에 계보를 자동 기록합니다. ETL 저장소 커밋의 83\%, 공용 프레임워크의 93\%를 작성했습니다. 이전에는 AWS EMR/PySpark 위에 대규모 클라우드 파이프라인을 운영했습니다.
     }
     \item{
     \textbf{측정으로 결정하는 아키텍처·트레이드오프 분석:}
