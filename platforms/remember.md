@@ -49,7 +49,7 @@ Kubernetes · Pulumi · Airflow · dbt · Iceberg · Ray · MLflow · DataHub ·
 
 ```
 Cellkey / Manager, Data Engineer (2025.07~2025.12)
-· AWS EC2에 shared-nothing StarRocks 클러스터를 구축해 분석 쿼리 7초 → 1.4초(80% 단축)
+· Airflow 3.x로 데이터 정제 파이프라인을 설계하고, AWS Lambda·Batch·Step Functions를 최적화해 데이터 워크플로를 확장
 
 Eazel / Team Lead, AI Labs (2022.06~2024.09)
 · 미술 시장 ETL 파이프라인 총괄 — 아키텍처 설계부터 배포·모니터링·성능 최적화까지 팀 리드

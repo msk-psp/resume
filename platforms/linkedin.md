@@ -31,7 +31,7 @@ What I care about is removing the human bottleneck rather than adding tools. Dat
 
 I work fast because I run AI coding agents continuously, and I keep that speed honest with verification gates: 719 unit tests in the platform SDK, CI checks that block tag/version drift and private-key commits, and 23 written incident post-mortems that turn each failure into a procedure.
 
-Previously: StarRocks analytics cluster (query time down 80%), AWS EMR/PySpark art-market pipelines, and iOS engineering. Comfortable anywhere between the kernel and the notebook.
+Previously: AWS EMR/PySpark art-market pipelines and iOS engineering. Comfortable anywhere between the kernel and the notebook.
 
 Stack: Kubernetes · Pulumi · Cilium · Airflow · dbt · Apache Iceberg · SeaweedFS · Ray/KubeRay · MLflow · DataHub · PostgreSQL · ClickHouse · Prometheus/Grafana · Dex/OIDC · Python
 ```
