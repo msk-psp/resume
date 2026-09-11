@@ -2,7 +2,7 @@
 \section{Summary}
 \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-    I design, build and operate an MLOps platform on on-prem Kubernetes. Over six months at HUINNO I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — in \textbf{Pulumi}, as the \textbf{sole owner of cluster construction} on a two-person platform team (93\% of stack-code changes and 83\% of the ETL repository's commits are mine). I remove human bottlenecks rather than add tools, and I put AI coding agents alongside me to raise what one engineer ships to team scale. Earlier: iOS $\rightarrow$ backend $\rightarrow$ frontend $\rightarrow$ cloud data pipelines, then led a data engineering team.
+    I design, build and operate an MLOps platform on on-prem Kubernetes. Over six months at HUINNO I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — in \textbf{Pulumi}, as \textbf{sole owner of cluster construction} on a two-person platform team (93\% of stack-code changes and 83\% of the ETL repo's commits are mine). I remove human bottlenecks rather than add tools, and I put AI coding agents alongside me to raise what one engineer ships to team scale. Earlier: iOS $\rightarrow$ backend $\rightarrow$ frontend $\rightarrow$ cloud data pipelines, then led a data engineering team.
     }}
 \end{itemize}
 
@@ -11,8 +11,8 @@
 \begin{itemize}[leftmargin=0.15in, label={}]
     \small{
     \item{\textbf{Led the design and implementation of the entire MLOps pipeline} — ingestion through the model registry, with no gap left manual, codified into 12 Pulumi stacks: infrastructure changes land as PRs and a new environment is rebuilt by composing stacks. (1,204 commits, 678 merged PRs.)}
-    \item{\textbf{10 nodes / 235 running pods / 23 internal services} in production. SSO across all 23 with Dex (GitHub OIDC) + oauth2-proxy, the same identity carried into Kubernetes RBAC.}
-    \item{\textbf{Removed the single-person dependency in dataset preparation} — "ask one data scientist and wait" became scheduled Airflow 3.x + dbt + Apache Iceberg runs with lineage in DataHub; researchers now query directly. (1,599 commits in the ETL repo; I wrote the shared framework myself, along with a product pipeline, the MIMIC-IV pipeline and the operational ones.)}
+    \item{\textbf{Bare-metal Kubernetes built from the company's own hardware} — no cloud: \textbf{10 nodes / 235 running pods / 23 internal services} in production, SSO across all 23 via Dex (GitHub OIDC) + oauth2-proxy, the same identity carried into Kubernetes RBAC.}
+    \item{\textbf{Removed the single-person dependency in dataset preparation} — "ask one data scientist and wait" became scheduled Airflow 3.x + dbt + Apache Iceberg runs with lineage in DataHub; researchers now query directly. (1,599 commits; the shared framework, a product pipeline, MIMIC-IV and the operational ones are all mine.)}
     \item{\textbf{A team's worth of platform in six months} — most of this Kubernetes MLOps platform was written with AI coding agents alongside me, and it is still running in production. Not speed alone: 719 SDK unit tests, CI gates, 23 incident write-ups and 30 PRDs went in with it.}
     \item{\textbf{Earlier:} Led the AWS EMR / PySpark art-market ETL pipeline (Eazel, team lead).}
     }
@@ -22,10 +22,10 @@
 \section{What I Do Now}
 \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-    Data Engineer, HUINNO (Dec 2025 --). \textbf{I design and build the platform that makes research faster, and lay the MLOps pipeline on top of it piece by piece.} \\
-    On bare-metal Kubernetes I operate every layer: network, storage, catalog, lineage, orchestration, distributed training, identity. \\
-    I am attaching a reproducibility contract plus MLflow tracking and a model registry so research code can move onto KubeRay; the contract stamps version, content hash, code commit, environment lock and seed onto a dataset at run time. \\
-    A quantified survey showed results surviving while the data, code and environment behind them did not — that is where this design started. \\
+    Data Engineer, HUINNO (Dec 2025 --). \textbf{I design and build the platform that makes research faster, and lay the MLOps pipeline on top of it piece by piece.} \\[2pt]
+    On bare-metal Kubernetes I operate every layer: network, storage, catalog, lineage, orchestration, distributed training, identity. \\[2pt]
+    I am attaching a reproducibility contract plus MLflow tracking and a model registry so research code can move onto KubeRay; the contract stamps version, content hash, code commit, environment lock and seed onto a dataset at run time. \\[2pt]
+    A quantified survey showed results surviving while the data, code and environment behind them did not — that is where this design started. \\[2pt]
     I am establishing the split where researchers own domain ETL and the platform owns execution, lineage, verification and retries.
     }}
 \end{itemize}
@@ -36,8 +36,8 @@
     \small{\item{
     \textbf{Platform}: Kubernetes (kubeadm) · Pulumi · Cilium · SeaweedFS · Dex/OIDC · Prometheus/Grafana \\[2pt]
     \textbf{Data}: Airflow 3.x · dbt · Apache Iceberg · DataHub · PostgreSQL (pg\_duckdb) · ClickHouse \\[2pt]
-    \textbf{ML}: Ray/KubeRay · MLflow · PyTorch · DVC \\[2pt]
-    \textbf{Languages \& other}: Python · SQL · Swift · Shell · AWS/GCP · LangChain
+    \textbf{ML}: Ray/KubeRay · MLflow \\[2pt]
+    \textbf{Languages \& other}: Python · SQL · Swift · Shell · AWS/GCP
     }}
 \end{itemize}
 
@@ -52,5 +52,5 @@
 
 %----------DETAIL----------%
 % One sentence does not warrant a section heading; keep it as a footer line
-\vspace{3pt}
+\vspace{1pt}
 {\small Full experience and project details are in a separate document (\texttt{resume\_english.pdf}).}
