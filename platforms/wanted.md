@@ -35,7 +35,7 @@
 · PostgreSQL + pg_duckdb로 Iceberg를 ad-hoc SQL로 엽니다. pyiceberg 코드를 작성해야 하던 분석을 브라우저 SQL 한 줄로 바꿨습니다.
 
 [학습 — 분산 학습 기반을 구축했습니다]
-· KubeRay로 서로 다른 SKU가 섞인 GPU 10장을 단일 풀로 묶습니다. 여기에 CUDA·PyTorch·ONNXRuntime 버전을 고정한 단일 워커 이미지와 사내 SDK 제출 API를 얹어 학습 환경을 일원화했습니다(자동 checkpoint·중단 지점 재개 지원).
+· KubeRay로 사양이 제각각인 GPU 10장을 단일 풀로 묶습니다. 여기에 CUDA·PyTorch·ONNXRuntime 버전을 고정한 단일 워커 이미지와 사내 SDK 제출 API를 얹어 학습 환경을 일원화했습니다(자동 checkpoint·중단 지점 재개 지원).
 · 도입 단계이며 연구 코드 이관이 남은 과제입니다. 이관을 막는 원인은 실측으로 규명했습니다.
 
 [설계 — 재현성 아키텍처는 기존 워크플로 정량 분석에서 나왔습니다]

@@ -72,19 +72,19 @@
     \resumeItemListEnd
 
     \resumeProjectHeading
-    {\textbf{Distributed Training on Heterogeneous GPUs with KubeRay}}{}
+    {\textbf{Distributed Training Across Mixed GPU Models with KubeRay}}{}
     \resumeItemListStart
-        \resumeItem{\textbf{Core Problem \& Goal:} The cluster mixes \textbf{heterogeneous GPU node SKUs}; ML researchers should be able to \textbf{submit distributed training jobs without re-tooling their environment} every time.}
+        \resumeItem{\textbf{Core Problem \& Goal:} The cluster mixes \textbf{GPU nodes of different models}; ML researchers should be able to \textbf{submit distributed training jobs without re-tooling their environment} every time.}
         \resumeItem{\textbf{My Role:} Ray cluster setup, unified training image, GPU-type-aware worker group policy, and automated in-house SDK installation pipeline.}
         \resumeItem{\textbf{Problem-Solving Process:}}
             \resumeItemListStart
                 \resumeItem{\textbf{Why a unified image:} Letting users set up environments per node causes recurring CUDA / dependency conflicts. \textbf{Unifying the worker image} and splitting only by GPU type via worker groups minimized operational cost and user friction.}
-                \resumeItem{\textbf{Implementation (How):} Configured \textbf{KubeRay} over heterogeneous GPU nodes with a single worker image (CUDA 12.8 · Python 3.12 · PyTorch · ONNXRuntime · Triton); split worker groups by GPU type and automated internal training SDK installation so researchers submit jobs without code changes.}
+                \resumeItem{\textbf{Implementation (How):} Configured \textbf{KubeRay} over GPU nodes of differing models with a single worker image (CUDA 12.8 · Python 3.12 · PyTorch · ONNXRuntime · Triton); split worker groups by GPU type and automated internal training SDK installation so researchers submit jobs without code changes.}
             \resumeItemListEnd
         \resumeItem{\textbf{Results \& Impact:}}
             \resumeItemListStart
                 \resumeItem{\textbf{Environment setup cost eliminated:} The setup step before distributed training disappeared; researchers focus on the code.}
-                \resumeItem{\textbf{Asymmetric resource utilization:} Different GPU SKUs are jointly utilized inside a single Ray cluster, improving overall cluster utilization.}
+                \resumeItem{\textbf{Mixed GPUs put to work:} GPUs of different models run side by side inside a single Ray cluster, improving overall cluster utilization.}
             \resumeItemListEnd
     \resumeItemListEnd
 

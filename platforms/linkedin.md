@@ -56,7 +56,7 @@ Designed, built and operate the company's entire MLOps pipeline on bare-metal Ku
 
 · Cut training-data delivery 25x: an 8 TB transfer from 8.4 days to 7.8 hours. Opened Iceberg to ad-hoc SQL via PostgreSQL + pg_duckdb.
 
-· Built the distributed-training foundation: 10 mixed-SKU GPUs in one KubeRay pool behind a pinned worker image and an SDK submission API. Consolidated 23 services onto one identity (Dex OIDC + oauth2-proxy) carried into Kubernetes RBAC.
+· Built the distributed-training foundation: 10 GPUs of mixed models in one KubeRay pool behind a pinned worker image and an SDK submission API. Consolidated 23 services onto one identity (Dex OIDC + oauth2-proxy) carried into Kubernetes RBAC.
 
 · Quantified the research workflow and designed a reproducibility architecture from it — 51 branches, 67-88% of notebook cells carrying stored outputs. The cause was not missing tooling but results having no coordinates; built a contract stamping version, content hash, commit and seed onto a dataset at execution time.
 
