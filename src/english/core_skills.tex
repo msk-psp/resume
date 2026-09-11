@@ -12,11 +12,6 @@
     Designed and implemented a medallion pipeline over \textbf{Mar--Jul 2026 (5 months)} on \textbf{Airflow 3.x + dbt (Cosmos) + Apache Iceberg} with lineage auto-recorded in \textbf{DataHub} (authored 83\% of the ETL repository and 93\% of its shared framework). Previously ran large-scale cloud pipelines on AWS EMR / PySpark.
     }
     \item{
-    \textbf{Architecture and trade-off decisions made by measurement:}
-    \\
-    I measure before choosing tools. Turned a GPU purchase request into reclamation with 10 days of telemetry (\textbf{5.3\% utilization, zero queued jobs, 1,112 GPU-hours held idle}), cut training-data delivery \textbf{25$\times$} by redesigning network and storage, and designed a reproducibility contract from a quantified survey of the research workflow. Weighing cost, performance and operational complexity is the same habit that drove earlier decisions such as adopting PGVector.
-    }
-    \item{
     \textbf{AI agents run continuously, backed by verification gates:}
     \\
     I run AI coding agents continuously to lift \textbf{one person's throughput to team scale} (678 merged PRs in 6 months), and keep that speed honest with \textbf{719 SDK unit tests}, CI gates and pre-commit hooks that block tag/version drift and private-key commits, and \textbf{23 incident write-ups and 30 PRDs}. Earlier, built deduplication systems and chatbot prototypes with LangChain and embedding models.
