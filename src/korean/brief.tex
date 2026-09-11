@@ -10,12 +10,10 @@
 \section{핵심 성과 (2026-09 실측)}
 \begin{itemize}[leftmargin=0.15in, label={}]
     \small{
-    \item{\textbf{인프라 전체를 코드로}. 수집부터 모델 저장소까지 12개 Pulumi 스택으로 나눴고 인프라를 고쳐도 PR로 남으며 새 환경은 스택만 골라 다시 세울 수 있음. (저장소 커밋 1,204건 · 머지 PR 678건)}
+    \item{\textbf{MLOps 파이프라인 전 구간을 직접 구축}. 수집부터 모델 레지스트리까지 끊긴 데 없이 이어 붙이고 12개 Pulumi 스택으로 코드화 — 인프라를 고쳐도 PR로 남고 새 환경은 스택만 골라 다시 세울 수 있음. (저장소 커밋 1,204건 · 머지 PR 678건)}
     \item{\textbf{10노드 · 상시 pod 235개 · 사내 서비스 23종}을 프로덕션 운영. 23종 전부에 Dex(GitHub OIDC) + oauth2-proxy SSO를 적용하고 같은 신원을 Kubernetes RBAC까지 연결.}
     \item{\textbf{데이터셋 준비를 한 사람에게 기대지 않게} — 담당자에게 부탁하고 기다리던 일을 Airflow 3.x + dbt + Apache Iceberg가 정해진 때에 알아서 돌리도록 바꿈. DataHub에 출처를 자동으로 남겨 연구자가 직접 찾아 쓰게 함. (ETL 저장소 커밋 1,599건 · 공용 프레임워크와 제품 파이프라인 · MIMIC-IV · 운영 파이프라인을 직접 작성)}
-    \item{\textbf{학습 데이터 전달 25배 단축} — 네트워크·스토리지 재설계로 iperf3 실측 \mbox{93.7\,Mbps} → \mbox{2.5\,Gbps}, \mbox{8\,TB 기준 8.4일 → 7.8시간}.}
-    \item{\textbf{GPU 증설 결정을 실측으로 전환}. 10일 측정 결과 가동률 \mbox{5.3\%} · 대기 \mbox{0건}, 병목은 유휴 세션이 점유한 \mbox{1,112 GPU-시간}(점유의 91\%). 구매 대신 할당 회수로 방향을 바꿈.}
-    \item{\textbf{AI 에이전트를 상시 투입해 1인 처리량을 팀 규모로} — 그 속도를 SDK 단위 테스트 719건 · CI 게이트 · 실패 기록 23건 · \mbox{PRD 30건}으로 받침.}
+    \item{\textbf{AI 에이전트로 개인이 감당하기 어려운 규모를 운영}. 보통 팀이 붙어 관리하는 Kubernetes 플랫폼을 AI 코딩 에이전트를 상시 투입해 대부분 직접 짰고, 6개월째 프로덕션으로 안정 운영 중. 그 속도는 SDK 단위 테스트 719건 · CI 게이트 · 실패 기록 23건 · \mbox{PRD 30건}이 받침.}
     \item{\textbf{이전 경력:} \mbox{AWS EMR/PySpark} 미술 시장 \mbox{ETL 파이프라인} 총괄(Eazel, 팀 리드).}
     }
 \end{itemize}

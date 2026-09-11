@@ -10,12 +10,10 @@
 \section{Key Results (measured 2026-09)}
 \begin{itemize}[leftmargin=0.15in, label={}]
     \small{
-    \item{\textbf{Bare-metal Kubernetes reproducible in code} — ingestion to model registry modularized into 12 Pulumi stacks; infrastructure changes tracked in PRs, new environments rebuilt by composing stacks. (1,204 commits, 678 merged PRs.)}
+    \item{\textbf{Built the entire MLOps pipeline} — ingestion through the model registry, with no gap left manual, codified into 12 Pulumi stacks: infrastructure changes land as PRs and a new environment is rebuilt by composing stacks. (1,204 commits, 678 merged PRs.)}
     \item{\textbf{10 nodes / 235 running pods / 23 internal services} in production. SSO across all 23 with Dex (GitHub OIDC) + oauth2-proxy, the same identity carried into Kubernetes RBAC.}
     \item{\textbf{Removed the single-person dependency in dataset preparation} — "ask one data scientist and wait" became scheduled Airflow 3.x + dbt + Apache Iceberg runs with lineage in DataHub; researchers now query directly. (1,599 commits in the ETL repo; I wrote the shared framework myself, along with a product pipeline, the MIMIC-IV pipeline and the operational ones.)}
-    \item{\textbf{Training-data delivery 25$\times$ faster} — network and storage redesign took iperf3 throughput from 93.7\,Mbps to 2.5\,Gbps; an 8\,TB transfer from 8.4 days to 7.8 hours.}
-    \item{\textbf{Reversed a GPU purchase decision with measurement} — 10 days of telemetry showed 5.3\% utilization and zero queued jobs; the bottleneck was 1,112 GPU-hours held idle by dormant sessions (91\% of held time); redirected from purchase to reclamation.}
-    \item{\textbf{AI coding agents run continuously to lift one person's throughput to team scale} — backed by 719 SDK unit tests, CI gates, 23 incident write-ups, 30 PRDs.}
+    \item{\textbf{AI agents let one person carry what normally takes a team} — I wrote most of this Kubernetes platform with coding agents running continuously, and have run it in production for six months. That speed is held honest by 719 SDK unit tests, CI gates, 23 incident write-ups and 30 PRDs.}
     \item{\textbf{Earlier:} Led the AWS EMR / PySpark art-market ETL pipeline (Eazel, team lead).}
     }
 \end{itemize}
