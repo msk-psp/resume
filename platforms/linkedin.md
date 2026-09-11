@@ -25,7 +25,7 @@ MLOps / Platform Engineer — built an on-prem Kubernetes ML platform end to end
 ```
 I build the machinery that lets ML research actually ship.
 
-Over the past six months I designed, built and now operate my company's entire MLOps pipeline on bare-metal Kubernetes — ingestion, lakehouse, transformation, lineage, distributed training, and the experiment and model registry. On a two-person platform team I owned cluster construction end to end: I authored the majority of all 12 Pulumi stacks (93% of stack-code changes) and shipped 678 merged pull requests across 10 nodes, 235 running pods and 23 internal services.
+Over the past six months I designed, built and now operate my company's entire MLOps pipeline on bare-metal Kubernetes — ingestion, lakehouse, transformation, lineage, distributed training, and the experiment and model registry. On a two-person platform team I owned cluster construction end to end — 93% of the stack-code changes and 83% of the ETL repository's commits are mine — and shipped 678 merged pull requests across 10 nodes, 235 running pods and 23 internal services.
 
 What I care about is removing the human bottleneck rather than adding tools. Dataset preparation used to route through one person running hard-coded scripts over SSH for hours; it now runs on a schedule with Airflow, dbt and Apache Iceberg, with table-level lineage recorded automatically in DataHub. When asked to evaluate a GPU purchase, I measured ten days of DCGM telemetry, found 5.3% utilization with zero queued jobs, and showed the bottleneck was 1,112 GPU-hours held idle by dormant sessions — the money stayed unspent.
 
@@ -36,7 +36,7 @@ Previously: AWS EMR/PySpark art-market pipelines and iOS engineering. Comfortabl
 Stack: Kubernetes · Pulumi · Cilium · Airflow · dbt · Apache Iceberg · SeaweedFS · Ray/KubeRay · MLflow · DataHub · PostgreSQL · ClickHouse · Prometheus/Grafana · Dex/OIDC · Python
 ```
 
-<!-- 약 1,650자. 2,600 한도 안. -->
+<!-- 약 1,669자. 2,600 한도 안. -->
 
 **줄일 때:** 4문단(AI + 검증)을 먼저 살리고 5문단(이전 경력)을 줄인다 — 이전 경력은
 Experience 에서 다시 보인다.
@@ -48,9 +48,9 @@ Experience 에서 다시 보인다.
 ```
 Designed, built and operate the company's entire MLOps pipeline on bare-metal Kubernetes — ingestion through distributed training and the model registry.
 
-· Sole owner of cluster construction on a two-person platform team. Authored the majority of all 12 Pulumi stacks (93% of stack-code changes) across 10 nodes / 235 pods / 23 services — 678 merged PRs, 1,204 commits (92% mine).
+· Sole owner of cluster construction on a two-person platform team. Wrote all 12 Pulumi stacks across 10 nodes / 235 pods / 23 services — 678 merged PRs, 1,204 commits.
 
-· Designed and implemented every branch of the ETL pipeline (83% of 1,599 commits): 93% of the shared framework, 100% of three product pipelines. Researchers own domain ETL; the platform owns execution, lineage, verification and retries.
+· Designed and implemented every branch of the ETL pipeline (1,599 commits): the shared framework and three product pipelines are mine. Researchers own domain ETL; the platform owns execution, lineage, verification and retries.
 
 · Removed the single-person dependency in dataset preparation — work stalled whenever one data scientist was away. Airflow 3.x + dbt + Apache Iceberg now run Bronze/Silver/Gold on a schedule, lineage auto-recorded in DataHub.
 
@@ -65,12 +65,12 @@ Designed, built and operate the company's entire MLOps pipeline on bare-metal Ku
 · Ran AI coding agents continuously to lift one person's throughput to team scale, backed by verification gates: 719 SDK unit tests, CI gates blocking tag/version drift and private-key commits, 23 incident write-ups and 30 PRDs.
 ```
 
-<!-- 1,997자 — 2,000 한도 안 ✓ -->
+<!-- 1,935자 — 2,000 한도 안 ✓ -->
 
 **더 줄일 때:** 아래 순서로 뺀다.
 
 1. 5번(distributed training) — 아직 도입 단계라 성과로는 약하다
 2. 7번(Access) — About 과 겹친다
-3. 2번(ETL)의 제품명 나열을 `93% of the shared framework` 까지만 남긴다
+3. 2번(ETL)의 제품 파이프라인 언급을 빼고 공용 프레임워크까지만 남긴다
 
 ⚠ **8번(GPU 구매 결정)과 9번(AI + 검증)은 마지막까지 남긴다.** 다른 지원자와 갈리는 자리다.
