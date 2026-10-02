@@ -1,24 +1,7 @@
 \section{Core Skills}
-
 \begin{itemize}[leftmargin=0.15in, label={}]
-    \item{
-    \textbf{Designing, building and operating an MLOps platform on on-prem Kubernetes:}
-    \\
-    I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — on bare-metal Kubernetes in \textbf{Pulumi}, and I build and operate it. It runs \textbf{10 nodes / 235 running pods / 23 internal services} in production, and I worked across all 12 stacks — networking (Cilium), storage (SeaweedFS), identity (Dex OIDC $\rightarrow$ Kubernetes RBAC) — authoring 93\% of stack-code changes and 83\% of the ETL repository's commits. Distributed training, experiment tracking and the model registry — the segment closing the lifecycle — have been underway \textbf{since Aug 2026}, and when the bottleneck sits outside the code I work \textbf{down to the hardware}: replacing cabling and switches, fitting reclaimed RAM and NVMe into nodes.
-    }
-    \item{
-    \textbf{Data pipelines and the lakehouse:}
-    \\
-    Designed and implemented a medallion pipeline over \textbf{Mar--Jul 2026 (5 months)} on \textbf{Airflow 3.x + dbt (Cosmos) + Apache Iceberg} with lineage auto-recorded in \textbf{DataHub}. Previously ran large-scale cloud pipelines on AWS EMR / PySpark.
-    }
-    \item{
-    \textbf{Working alongside AI coding agents — with verification gates behind the speed:}
-    \\
-    I run AI coding agents continuously to lift \textbf{one person's throughput to team scale} (678 merged PRs in 6 months), and keep that speed honest with \textbf{719 SDK unit tests}, CI gates and pre-commit hooks that block tag/version drift and private-key commits, and \textbf{23 incident write-ups and 30 PRDs}. Earlier, built deduplication systems and chatbot prototypes with LangChain and embedding models.
-    }
-    \item{
-    \textbf{Full-stack breadth and team leadership:}
-    \\
-    A path from iOS through backend (FastAPI / Flask), frontend (Next.js) and cloud (AWS / GCP) let me lead a data engineering team; today I design and enforce the split where \textbf{researchers own domain ETL and the platform owns execution, lineage and verification}.
-    }
+\item{\textbf{Requirements discovery and stack selection:} Learned a new medical domain and interviewed researchers to identify bottlenecks in data production and sharing. Defined component responsibilities and designed and built an in-house MLOps platform from scratch.}
+\item{\textbf{Data pipelines and reproducibility:} Connected ingestion, transformation, versions and lineage with Airflow, dbt, Iceberg and DataHub. Built shared query access using the SeaweedFS REST Catalog and PostgreSQL + pg\_duckdb, plus manifest freeze/restore tools and MLflow experiment and model management.}
+\item{\textbf{On-premises infrastructure and hardware operations:} Sole owner of bare-metal Kubernetes cluster construction, managed through 12 Pulumi stacks. Led RAM/NVMe reuse, network-equipment configuration and NUMA, memory and disk adjustments.}
+\item{\textbf{Cloud data engineering and collaboration:} Built AWS EMR/PySpark pipelines and vector-search workflows, and led a data engineering team. Apply experience across iOS, backend and frontend development to define practical ownership boundaries between researchers and the platform team.}
 \end{itemize}

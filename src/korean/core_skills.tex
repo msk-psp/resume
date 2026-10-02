@@ -1,24 +1,7 @@
 \section{Core Skills}
-
 \begin{itemize}[leftmargin=0.15in, label={}]
-    \item{
-    \textbf{온프레미스 Kubernetes 위 MLOps 플랫폼 설계·구축·운영:}
-    \\
-    베어메탈 Kubernetes 위에 수집 → 레이크하우스 → 변환 → 계보 → 분산 학습 → 실험·모델 레지스트리까지 전 구간을 \textbf{Pulumi}로 코드화해 직접 구축하고 운영합니다. \textbf{10노드 · 상시 pod 235개 · 사내 서비스 23종}을 프로덕션으로 돌리고 있고 네트워크(Cilium) · 저장소(SeaweedFS) · 로그인(Dex OIDC → Kubernetes RBAC)까지 12개 스택을 하나도 빼놓지 않고 직접 짰습니다(인프라 스택 코드 변경의 93\%, ETL 저장소 커밋의 83\%를 직접 작성). 그 뒤를 잇는 분산 학습 · 실험 기록 · 모델 저장소는 \textbf{2026.08부터} 붙이고 있습니다. 문제가 코드 밖에 있을 때는 랜선을 갈거나 스위치를 바꾸고 남는 RAM · NVMe를 꽂는 일까지 \textbf{직접} 합니다.
-    }
-    \item{
-    \textbf{데이터 파이프라인과 레이크하우스:}
-    \\
-    \textbf{Airflow 3.x + dbt(Cosmos) + Apache Iceberg} 메달리온 파이프라인을 \textbf{2026.03--07(5개월)}에 설계·구현하고 \textbf{DataHub}에 계보를 자동 기록합니다. 이전에는 AWS EMR/PySpark 위에 대규모 클라우드 파이프라인을 운영했습니다.
-    }
-    \item{
-    \textbf{AI 에이전트와 함께 일하는 방식 — 속도는 검증 장치로 받침:}
-    \\
-    AI 코딩 에이전트를 상시 투입해 \textbf{1인 처리량을 팀 규모로} 끌어올립니다(6개월 머지 PR 678건). 그 속도는 \textbf{SDK 단위 테스트 719건}, 태그/버전 불일치와 개인키 커밋을 막는 CI 게이트·pre-commit 훅, \textbf{실패 기록 23건 · PRD 30건}이 받칩니다. 이전에는 LangChain·임베딩 모델로 데이터 중복 제거 시스템과 챗봇 프로토타입을 개발했습니다.
-    }
-    \item{
-    \textbf{풀스택 폭과 팀 리드:}
-    \\
-    iOS → 백엔드(FastAPI/Flask) → 프론트(Next.js) → 클라우드(AWS/GCP)를 거친 폭으로 데이터 엔지니어링 팀을 리드했고 지금은 「도메인 ETL은 연구자가, 실행·계보·검증은 플랫폼이」 맡는 분담 구조를 설계해 정착시켰습니다.
-    }
+\item{\textbf{문제 정의와 기술 선정:} 낯선 의료 도메인을 학습하고 연구자 인터뷰로 데이터 생산·공유의 병목을 발굴했습니다. 요구사항에 맞춰 기술별 책임을 나누고 사내 MLOps를 처음부터 설계·구축했습니다.}
+\item{\textbf{데이터 파이프라인과 재현 기반:} Airflow · dbt · Iceberg · DataHub로 수집·변환·버전·계보를 연결하고, SeaweedFS REST Catalog와 PostgreSQL + pg\_duckdb로 공통 조회 환경을 구축했습니다. manifest 동결·복원 및 MLflow 실험·모델 관리 기반을 구현했습니다.}
+\item{\textbf{온프레미스 인프라와 하드웨어 운용:} 사내 베어메탈 Kubernetes 클러스터 구성을 단독 담당하고 12개 Pulumi 스택으로 관리합니다. 유휴 장비의 RAM·NVMe 재활용부터 네트워크 장비·NUMA·메모리·디스크 구성까지 직접 주도했습니다.}
+\item{\textbf{클라우드 데이터 엔지니어링과 협업:} AWS EMR/PySpark 데이터 파이프라인과 벡터 검색을 구축하고 데이터 엔지니어링 팀을 리드했습니다. iOS·백엔드·프론트엔드 경험을 바탕으로 연구자와 플랫폼의 책임 범위를 구체화합니다.}
 \end{itemize}

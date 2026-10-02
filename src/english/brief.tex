@@ -1,35 +1,21 @@
-%----------SUMMARY----------%
 \section{Summary}
 \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-    I design, build and operate an MLOps platform on on-prem Kubernetes. Over six months at HUINNO I codified the entire path — ingestion $\rightarrow$ lakehouse $\rightarrow$ transformation $\rightarrow$ lineage $\rightarrow$ distributed training $\rightarrow$ experiment / model registry — in \textbf{Pulumi}, as \textbf{sole owner of cluster construction} on a two-person platform team (93\% of stack-code changes and 83\% of the ETL repo's commits are mine). I remove human bottlenecks rather than add tools, and I put AI coding agents alongside me to raise what one engineer ships to team scale. Earlier: iOS $\rightarrow$ backend $\rightarrow$ frontend $\rightarrow$ cloud data pipelines, then led a data engineering team.
-    }}
+\small{\item{Data engineer who learned a new domain, interviewed researchers to define requirements, and designed and built an in-house MLOps platform from scratch. Independently learned the medical domain and on-premises MLOps, leading stack selection, hardware configuration and data-pipeline implementation. Previously built AWS data pipelines and led a data engineering team.}}
 \end{itemize}
-
-%----------KEY RESULTS----------%
-\section{Key Results (measured 2026-09)}
+\section{Selected Platform Work}
 \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{
-    \item{\textbf{Led the design and implementation of the entire MLOps pipeline} — ingestion through the model registry, with no gap left manual, codified into 12 Pulumi stacks: infrastructure changes land as PRs and a new environment is rebuilt by composing stacks. (1,204 commits, 678 merged PRs.)}
-    \item{\textbf{Bare-metal Kubernetes built from the company's own hardware} — no cloud: \textbf{10 nodes / 235 running pods / 23 internal services} in production, SSO across all 23 via Dex (GitHub OIDC) + oauth2-proxy, the same identity carried into Kubernetes RBAC.}
-    \item{\textbf{Removed the single-person dependency in dataset preparation} — "ask one data scientist and wait" became scheduled Airflow 3.x + dbt + Apache Iceberg runs with lineage in DataHub; researchers now query directly. (1,599 commits; the shared framework, a product pipeline, MIMIC-IV and the operational ones are all mine.)}
-    \item{\textbf{A team's worth of platform in six months} — most of this Kubernetes MLOps platform was written with AI coding agents alongside me, and it is still running in production. Not speed alone: 719 SDK unit tests, CI gates, 23 incident write-ups and 30 PRDs went in with it.}
-    \item{\textbf{Earlier:} Led the AWS EMR / PySpark art-market ETL pipeline (Eazel, team lead).}
-    }
+\small{
+\item{\textbf{Led requirements discovery and greenfield MLOps delivery:} Interviewed researchers and examined data, code and execution workflows to identify producer dependencies, scattered datasets and missing versions and lineage. Assigned clear responsibilities to Airflow for execution and retries, dbt for SQL transformations, Iceberg for table versions and DataHub for lineage, then designed and implemented the shared platform.}
+\item{\textbf{Built and operated on-premises bare-metal Kubernetes:} Sole owner of cluster construction on a two-person platform team. Built a 10-node cluster from company hardware and codified networking, storage, identity and execution environments in 12 Pulumi stacks (as of September 2026). Tracked infrastructure changes and inter-stack dependencies to support repeatable deployment.}
+\item{\textbf{Led hardware configuration and operations:} Disassembled idle PCs and workstations to reclaim and reinstall RAM and NVMe drives; selected and replaced network equipment. Addressed NUMA and dual-channel configuration, memory pressure and swap, and separated the PostgreSQL data disk, adapting both hardware and system settings to actual workloads.}
+\item{\textbf{Designed Iceberg catalog and DuckDB query access:} Used SeaweedFS S3-compatible storage and its Iceberg REST Catalog to manage Silver/Gold data and metadata with NVMe/HDD storage tiers. Built PostgreSQL + pg\_duckdb query access. For dimension-table generation, resolved the latest metadata location from the catalog and passed it to DuckDB, avoiding version inference from filenames.}
+\item{Earlier: Led AWS EMR/PySpark art-market ETL pipelines at Eazel as a team lead.}
+}
 \end{itemize}
-
-%----------CURRENT WORK----------%
-\section{What I Do Now}
+\section{Current Focus}
 \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-    Data Engineer, HUINNO (Dec 2025 --). \textbf{I design and build the platform that makes research faster, and lay the MLOps pipeline on top of it piece by piece.} \\[2pt]
-    On bare-metal Kubernetes I operate every layer: network, storage, catalog, lineage, orchestration, distributed training, identity. \\[2pt]
-    I am attaching a reproducibility contract plus MLflow tracking and a model registry so research code can move onto KubeRay; the contract stamps version, content hash, code commit, environment lock and seed onto a dataset at run time. \\[2pt]
-    A quantified survey showed results surviving while the data, code and environment behind them did not — that is where this design started. \\[2pt]
-    I am establishing the split where researchers own domain ETL and the platform owns execution, lineage, verification and retries.
-    }}
+\small{\item{Data Engineer, HUINNO (Dec 2025 --). Operate the shared data pipelines and on-premises platform while extending reproducibility features that connect data versions, code and environments. MLflow tracking, the model registry and manifest freeze/restore tools are built; research-code integration and end-to-end reproducibility validation are in progress.}}
 \end{itemize}
-
 %----------STACK----------%
 \section{Stack}
 \begin{itemize}[leftmargin=0.15in, label={}]
