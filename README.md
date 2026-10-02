@@ -10,6 +10,7 @@ LaTeX sources for my resume / CV. Korean and English versions are built from sha
 ├── resume_english.tex      # English version entry point
 ├── resume_brief_korean.tex # 1-page brief (KR) — who I am, numbers only; body in src/korean/brief.tex
 ├── resume_brief_english.tex# 1-page brief (EN) — mirror; body in src/english/brief.tex
+├── resume_brief_3page_korean.tex # 3-page A4 Korean summary; personal identifiers omitted except DOB
 ├── custom-commands.tex     # Shared LaTeX macros (\resumeSubheading, etc.)
 ├── fonts/                  # Bundled NanumGothic fonts (so xelatex works without system install)
 ├── images/                 # Project screenshots referenced from .tex
@@ -33,6 +34,7 @@ Requires a LaTeX distribution with `xelatex` (TeX Live, MacTeX, or MikTeX). Kore
 # One-shot build
 xelatex resume_korean.tex
 xelatex resume_english.tex
+xelatex resume_brief_3page_korean.tex
 
 # Or with latexmk (auto-handles multi-pass references)
 latexmk -xelatex resume_korean.tex
@@ -42,7 +44,7 @@ latexmk -xelatex resume_english.tex
 latexmk -C
 ```
 
-Built PDFs are gitignored — regenerate locally before sharing.
+Build intermediates are gitignored. Resume PDFs are tracked for sharing; regenerate them after changing their LaTeX sources.
 
 ## Adding a new experience
 
