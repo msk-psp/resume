@@ -1,0 +1,116 @@
+% Three-page English resume. Personal identifiers omitted except date of birth.
+% Build from the repository root: xelatex resume_brief_3page_english.tex
+\documentclass[a4paper,10pt]{article}
+\usepackage{fontspec}
+\setmainfont{NanumGothic}[Path=fonts/,Extension=.ttf,UprightFont=*,BoldFont=*Bold]
+\usepackage[margin=19mm,top=18mm,bottom=19mm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage[unicode,pdfauthor={},pdftitle={Data Engineering - Selected Projects}]{hyperref}
+\definecolor{accent}{HTML}{193D50}
+\definecolor{muted}{HTML}{536570}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\footnotesize\color{muted}Data Engineering · Selected Projects}
+\fancyfoot[R]{\footnotesize\color{muted}\thepage\ / 3}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\tabcolsep}{0pt}
+\linespread{1.04}
+\raggedright
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}[\vspace{2pt}\titlerule]
+\titlespacing*{\section}{0pt}{13pt}{7pt}
+\setlist[itemize]{leftmargin=14pt,itemsep=3pt,topsep=3pt,parsep=0pt}
+\newcommand{\role}[3]{\textbf{#1}\hfill{\small #2}\\{\small\color{muted}#3}\par}
+\newcommand{\project}[2]{\vspace{5pt}\textbf{\color{accent}#1}\hfill{\small\color{muted}#2}\par}
+\newcommand{\birthdate}{1992.01.02}
+\begin{document}
+{\fontsize{25}{31}\selectfont\bfseries\color{accent}Data Engineering | Selected Projects}\par
+{\small Date of birth: 2 January 1992\hfill\href{https://github.com/msk-psp/resume/blob/master/resume_english.pdf}{\color{accent}\underline{Full Resume (GitHub)}}}\par
+I learned a new domain, interviewed researchers to define requirements, and designed and built an in-house MLOps platform from scratch. I led stack selection, hands-on hardware configuration, data-pipeline implementation and operations.
+
+\section{HUINNO | Research Data Pipelines \& Lakehouse}
+\role{Data Engineer}{Dec 2025 -- Present}{Scope: ETL, lakehouse, on-premises hardware and Kubernetes construction and operations}
+\project{01. From Requirements Discovery to MLOps Delivery}{}
+\textbf{Challenge} · Build a shared research platform from scratch while learning the medical-data domain and on-premises MLOps. Existing workflows relied on individual scripts and file transfers.
+\begin{itemize}
+\item \textbf{Discovery:} Interviewed researchers and analyzed data, code and execution workflows. Identified producer-dependent dataset preparation, scattered experiment records and missing versions and lineage; translated these into automation, shared-storage and reproducibility requirements.
+\item \textbf{Stack selection:} Assigned execution and retries to Airflow, SQL transformations to dbt, table versioning to Iceberg and lineage to DataHub. Selected Kubernetes for shared execution on company hardware, and SeaweedFS for S3 compatibility and NVMe/HDD storage tiers.
+\item \textbf{Implementation:} Connected ingestion, Bronze/Silver/Gold transformations, lineage and SQL access. Built the common ETL framework, research-data pipelines, MIMIC-IV ingestion and maintenance workflows, with PostgreSQL + pg\_duckdb for analytical queries.
+\item \textbf{Ownership and adoption:} Defined researcher ownership of domain transformations and platform ownership of execution, lineage, validation and retries. Used follow-up interviews to identify adoption barriers and refine rollout plans.
+\end{itemize}
+\textbf{Outcome} · Delivered a shared data platform from domain learning and problem definition through implementation and operations, enabling direct data access and further reproducibility features.
+
+\project{02. On-Premises Bare-Metal Kubernetes \& Hardware}{}
+\textbf{Challenge} · Operate the platform on existing company hardware with mixed specifications and memory, storage and network bottlenecks.
+\begin{itemize}
+\item \textbf{Cluster ownership:} Sole owner of cluster construction on a two-person platform team. Built and operated 10 bare-metal nodes, codifying infrastructure in 12 Pulumi stacks (September 2026).
+\item \textbf{Hardware operations:} Reclaimed and reinstalled RAM and NVMe drives from idle PCs and workstations. Led hardware configuration, memory and disk expansion, and network-equipment selection and replacement.
+\item \textbf{System diagnosis:} Investigated NUMA, dual-channel memory and the effects of memory pressure on SSH and Kubernetes. Adjusted swap settings and separated the PostgreSQL data disk.
+\item \textbf{Storage and networking:} Configured NVMe/HDD tiers for the SeaweedFS-backed Iceberg store. Traced transfer paths down to cables and switches, replacing equipment and adjusting storage settings as needed.
+\end{itemize}
+\textbf{Outcome} · Repurposed idle hardware and connected physical infrastructure, the OS, Kubernetes and data storage into an on-premises foundation for ETL and analytics.
+
+\newpage
+{\fontsize{21}{27}\selectfont\bfseries\color{accent}Data Reliability \& Distributed Processing}\par
+\section{HUINNO | Reproducibility Foundations with Iceberg}
+\role{Data Engineer}{Dec 2025 -- Present}{Scope: shared storage, lineage, data versions, dataset freezing and restoration}
+\project{03. Data Reliability, Versioning \& Reproducibility}{}
+\textbf{Problem} · Data was scattered across nodes, and production and storage knowledge depended on a few people. Their absence made datasets difficult to obtain. Generation code was unversioned, with no foundation for reproducing datasets. Data moved through SSH copies; models and performance were shared in Notion without linked records of data, code, models and results.
+\begin{itemize}
+\item \textbf{Shared storage and catalog:} Consolidated data in SeaweedFS S3-compatible storage and used its Iceberg REST Catalog to manage Silver/Gold data and metadata. Combined Iceberg snapshots and versions with DataHub lineage as a foundation for reproducibility.
+\item \textbf{SQL access:} Built Iceberg query access through PostgreSQL + pg\_duckdb. Resolved the latest metadata location from the catalog and passed it to DuckDB for Silver dimension-table generation, avoiding version inference from filenames.
+\item \textbf{Freeze and restore:} Implemented shared tools that pin data versions in a manifest and restore the same datasets. Added restoration and reproducibility metadata lookup, usage guidance and automated checks.
+\item \textbf{Experiment and model tracking:} Deployed MLflow tracking and a model registry with SeaweedFS artifact storage. Research-code integration is in progress to connect data versions, code and execution environments to experiment records.
+\item \textbf{Operational reliability:} Recovered missing source files and verified integrity. Isolated Airflow and database services by environment and used dedicated validation buckets and permissions to control impact on production data.
+\end{itemize}
+\textbf{Outcome} · Built a foundation for reusing the same training data through catalog management, versioning, lineage, freezing and restoration. Research-code integration and end-to-end data-to-model reproducibility validation remain in progress.
+
+\section{Eazel | Integrated Art-Market Data Platform}
+\role{Team Lead, AI Labs}{Jun 2022 -- Sep 2024}{Scope: pipeline architecture, implementation, deployment, monitoring and optimization}
+\project{04. AWS EMR/PySpark Transformation \& Loading}{Jan -- Oct 2023}
+\textbf{Problem} · Integrate data on artists, artworks, auctions and institutions for an analytics service, with repeatable transformations and capacity for growing collection volumes.
+\begin{itemize}
+\item \textbf{Architecture:} Led pipeline design and implemented cleansing, loading and partitioning for distributed processing on AWS EMR/PySpark.
+\item \textbf{Execution stages:} Defined processing stages as Python files and configured sequential execution as EMR Steps when the cluster was created.
+\item \textbf{Orchestration:} Used boto3 in Airflow DAGs to launch EMR jobs, scheduling downstream transformation and loading after collection.
+\end{itemize}
+\textbf{Outcome} · Built the data-processing foundation for art-market analytics, with distributed processing and scheduled workflows to support growing data volumes.
+
+\newpage
+{\fontsize{21}{27}\selectfont\bfseries\color{accent}Collection, Data Quality \& Modeling}\par
+\section{Eazel | From Collection to Analytics-Ready Data}
+\role{Team Lead, AI Labs}{Jun 2022 -- Sep 2024}{Scope: collection operations, deduplication optimization and warehouse schema design}
+\project{05. Centralized Collection Management}{Jan 2023 -- Feb 2024}
+\textbf{Problem} · Managing more than 50 scraper instances individually increased monitoring and incident-response effort. Collection and downstream execution needed central coordination.
+\begin{itemize}
+\item \textbf{Central control:} Built a Flask management API and WebSocket connections to dispatch collection targets and exchange instance status and metrics.
+\item \textbf{Automation:} Developed static/dynamic web and API collectors. Scheduled collection through Airflow calls to the management API and connected downstream transformations and loading to EMR jobs.
+\end{itemize}
+\textbf{Outcome} · Centralized control, execution status and logs for 50+ collection instances, enabling operators to identify failing instances and restart them remotely.
+
+\project{06. Image/Text Deduplication with pgvector}{Nov 2023 -- Feb 2024}
+\textbf{Problem} · The Faiss-CPU workflow downloaded embeddings from PostgreSQL, converted data types and built an external index. Repeated transfers, conversions and index creation added processing overhead.
+\begin{itemize}
+\item \textbf{Analysis and collaboration:} Analyzed overhead in the initial system built with an ML research engineer, then moved vector search into PostgreSQL.
+\item \textbf{Embedding use:} Used Facebook SSCD image embeddings and OpenAI text embeddings to identify similar records.
+\item \textbf{Storage and indexing:} Converted NumPy arrays to pgvector's vector type and implemented IVFFlat and HNSW indexes.
+\end{itemize}
+\textbf{Outcome} · Simplified deduplication by reducing external data transfers and conversions, cutting index-creation overhead by 50\%.
+
+\project{07. Warehouse Schema Redesign with a SSoT}{Feb -- Sep 2024}
+\textbf{Problem} · A single RDS instance served as both source storage and warehouse, increasing duplicate-data management and cost pressures. Records from multiple sources needed a consistent storage model.
+\begin{itemize}
+\item \textbf{Layer separation:} Redesigned DataSource, Data Warehouse and Data Mart layers toward an architecture using S3 as a data lake.
+\item \textbf{Canonical data model:} Designed approximately 50 tables, including single-source-of-truth (SSoT) tables to consistently manage duplicate records from multiple sources.
+\end{itemize}
+\textbf{Outcome} · Defined canonical records and storage-layer responsibilities through approximately 50 table schemas, providing the architecture and schema design for S3 data-lake adoption and separation of RDS responsibilities.
+
+\section{Certifications \& Languages}
+\textbf{Engineer Information Processing} · Nov 2017\\
+\textbf{English} · OPIc Advanced Low (AL)
+\end{document}
