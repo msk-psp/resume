@@ -2,6 +2,12 @@
 
 LaTeX sources for my resume / CV. Korean and English versions are built from shared experience and project fragments.
 
+## Two-page English application resume
+
+[Download PDF](output/pdf/minsoo-kim-apple-resume.pdf) · [Edit LaTeX source](output/pdf/minsoo-kim-apple-resume.tex)
+
+A two-page resume prepared for the Apple Senior Data Engineer & Scientist role, with contact information, full career history, education, and relevant data engineering and analytics experience.
+
 ## Layout
 
 ```
@@ -15,6 +21,7 @@ LaTeX sources for my resume / CV. Korean and English versions are built from sha
 ├── custom-commands.tex     # Shared LaTeX macros (\resumeSubheading, etc.)
 ├── fonts/                  # Bundled NanumGothic fonts (so xelatex works without system install)
 ├── images/                 # Project screenshots referenced from .tex
+├── output/pdf/             # Two-page English application resume (.tex and .pdf)
 └── src/
     ├── korean/             # KR-specific sections: heading, core_skills, skills,
     │                       #   career_summary, experience, education, others, coverletter
@@ -37,6 +44,9 @@ xelatex resume_korean.tex
 xelatex resume_english.tex
 xelatex resume_brief_3page_korean.tex
 xelatex resume_brief_3page_english.tex
+
+# Standalone two-page application resume
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=output/pdf output/pdf/minsoo-kim-apple-resume.tex
 
 # Or with latexmk (auto-handles multi-pass references)
 latexmk -xelatex resume_korean.tex

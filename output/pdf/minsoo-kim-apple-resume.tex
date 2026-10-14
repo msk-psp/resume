@@ -1,0 +1,112 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[margin=18mm,top=16mm,bottom=17mm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,urlcolor=accent,linkcolor=accent,
+  pdftitle={Minsoo Kim - Data Engineer},pdfauthor={Minsoo Kim}]{hyperref}
+\definecolor{accent}{HTML}{193D50}
+\definecolor{muted}{HTML}{52616B}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+\setlist[itemize]{leftmargin=12pt,itemsep=3pt,topsep=4pt,parsep=0pt,partopsep=0pt}
+\titleformat{\section}{\fontsize{11.5}{14}\selectfont\bfseries\color{accent}}{}{0pt}{}[\vspace{2pt}\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\fontsize{8}{10}\selectfont\color{muted}Minsoo Kim | Data Engineer}
+\fancyfoot[R]{\fontsize{8}{10}\selectfont\color{muted}\thepage\ / 2}
+\renewcommand{\headrulewidth}{0pt}
+\newcommand{\employer}[3]{\vspace{5pt}\textbf{\color{accent}#1}\hfill{\small\color{muted}#2}\\\textbf{#3}\par}
+\newcommand{\position}[2]{\vspace{6pt}\textbf{#1}\hfill{\small\color{muted}#2}\par}
+
+\begin{document}
+\fontsize{10.5}{13}\selectfont
+{\fontsize{27}{32}\selectfont\bfseries\color{accent}Minsoo Kim}\par
+\vspace{3pt}
+{\fontsize{12}{15}\selectfont Data Engineer | Data Platforms \& Analytics}\par
+\vspace{5pt}
+{\small Seoul, South Korea \enspace|\enspace +82 10-7714-9201 \enspace|\enspace
+\href{mailto:vibrio0102@gmail.com}{vibrio0102@gmail.com}}\par
+\vspace{2pt}
+{\small\href{https://www.linkedin.com/in/minsoo-kim-167405131}{linkedin.com/in/minsoo-kim-167405131}
+\enspace|\enspace\href{https://github.com/msk-psp}{github.com/msk-psp}}\par
+
+\section{SUMMARY}
+Data engineer with experience building research data platforms and art-market analytics pipelines. Led platform delivery from stakeholder interviews and requirements definition through implementation and operations. Hands-on experience in Python, SQL, data integration, distributed processing, data quality, and governance.
+
+\section{CORE SKILLS}
+\textbf{Programming:} Python, SQL\\
+\textbf{Data:} Data engineering, ETL, integration, modeling, warehousing, quality, governance\\
+\textbf{Analytics \& AI:} Data analysis, machine learning, LangChain \enspace|\enspace \textbf{Cloud:} AWS
+
+\section{PROFESSIONAL EXPERIENCE}
+\employer{HUINNO}{Dec 2025 -- Present}{Data Engineer}
+\begin{itemize}
+\item Built a shared data platform for medical research. Interviewed researchers, defined requirements for automated workflows and reproducibility, and designed the architecture and technology stack.
+\item Built Airflow/dbt pipelines and an Iceberg lakehouse, with PostgreSQL/DuckDB SQL access, replacing scattered scripts and file transfers with shared data workflows.
+\item Combined Iceberg dataset versions with DataHub lineage. Created tools to pin and restore specific dataset versions, and implemented source-data recovery and integrity checks.
+\item Built and operated a 10-node Kubernetes cluster using company hardware and Pulumi. Separated execution environments and integrated identity and access controls.
+\item Deployed MLflow experiment tracking and a model registry. Research-code integration and end-to-end reproducibility validation remain in progress.
+\end{itemize}
+
+\employer{Cellkey}{Jul 2025 -- Dec 2025}{Data Engineer}
+\begin{itemize}
+\item Designed a data-cleaning pipeline with Apache Airflow 3.x and deployed it locally.
+\item Maintained and tuned data workflows using AWS Lambda, Batch, and Step Functions.
+\end{itemize}
+
+\employer{Netmelon}{Mar 2025 -- Jun 2025}{Backend Engineer (Freelance)}
+\begin{itemize}
+\item Implemented backend APIs for Android and iOS in-app purchases, including subscription renewals and cancellations.
+\item Containerized a Flask service with Docker and deployed it on Google Cloud Run; operated Firestore and Cloud Storage and implemented resource-ownership checks.
+\item Added unit tests for APIs backed by large language models and refactored legacy code.
+\end{itemize}
+
+\newpage
+{\fontsize{12}{15}\selectfont\bfseries\color{accent}PROFESSIONAL EXPERIENCE (CONTINUED)}\par
+\vspace{3pt}\hrule\vspace{5pt}
+\textbf{\color{accent}Eazel Inc.}\hfill{\small\color{muted}Jan 2019 -- Sep 2024}\par
+
+\position{Team Lead, AI Labs}{Jun 2022 -- Sep 2024}
+\begin{itemize}
+\item Led the design, implementation, and operation of data pipelines integrating artist, artwork, auction, and institution data for art-market analytics.
+\item Built distributed transformation and loading pipelines with AWS EMR and PySpark, orchestrated through Airflow.
+\item Centralized scheduling, monitoring, and remote control for 50+ collection instances with Flask and WebSockets, enabling operators to identify failures and restart instances remotely.
+\item Moved image and text duplicate detection into PostgreSQL with pgvector, reducing data transfers and type conversions and cutting index build time by 50\%.
+\item Designed approximately 50 warehouse tables and canonical records to manage duplicate data consistently across sources. Defined separate source, warehouse, and data-mart layers.
+\item Built analytics dashboards and a LangChain chatbot prototype with PostgreSQL and Neo4j query tools. Managed AWS infrastructure and GitHub Actions CI/CD.
+\end{itemize}
+
+\position{MLOps Engineer}{Oct 2021 -- Jun 2022}
+\begin{itemize}
+\item Performed data analysis, natural language processing (NLP) modeling, and validation using Hugging Face; integrated DVC into machine learning workflows.
+\item Built and operated Instagram data collectors and managed PostgreSQL data.
+\item Built a social-network analysis dashboard with Flask, Next.js, and Cytoscape.js. Its findings supported Series A fundraising.
+\end{itemize}
+
+\position{iOS Developer}{Jan 2019 -- Oct 2021}
+\begin{itemize}
+\item Led API-client design and backend integration with a focus on application performance and scalability.
+\item Introduced GitHub Actions CI/CD and a reactive architecture using ReactorKit to improve application responsiveness and maintainability.
+\end{itemize}
+
+\employer{Finple Inc.}{Jan 2018 -- Nov 2018}{Software Engineer, DevOps}
+\begin{itemize}
+\item Maintained hybrid iOS and Android applications and developed a Node.js data scraper.
+\end{itemize}
+
+\section{EDUCATION}
+\textbf{Korea Polytechnic University}\hfill{\small\color{muted}Graduated Feb 2018}\\
+B.S., Computer Engineering
+
+\section{CERTIFICATION \& LANGUAGES}
+\textbf{Certification:} Engineer Information Processing, HRD Korea \hfill{\small\color{muted}Nov 2017}\\
+\textbf{Languages:} Korean (native); English (OPIc Advanced Low)
+
+\end{document}
